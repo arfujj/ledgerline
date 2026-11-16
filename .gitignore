@@ -16,3 +16,7 @@ corpus/regulatory/*
 node_modules/
 .next/
 .DS_Store
+
+# iCloud/Finder conflict copies (e.g. "file 2.py")
+* 2
+* 2.*

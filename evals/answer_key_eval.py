@@ -1,9 +1,11 @@
 """Score findings against the seeded answer key (eval-only; the app never reads the key).
 
-Matching rule (deterministic): a finding matches a key item when it cites at least one of the
-key item's evidence documents (for inefficiencies: at least one [q:...] data-query citation) AND its title/rationale/recommendation mentions at least one of
-the item's match keywords. Precision = findings matching any key item / findings considered.
-Recall = key items matched / key items. Severity agreement over matched pairs.
+Matching rule (deterministic): a finding matches a key item when
+  * gaps: it cites at least one of the item's evidence documents;
+  * inefficiencies: it cites at least one [q:...] data query;
+  AND its title/rationale/recommendation mentions one of the item's distinctive keywords.
+Precision = findings matching any key item / findings considered (a lower bound, since real
+but unseeded findings count against it). Recall = key items matched / key items.
 """
 
 from __future__ import annotations
