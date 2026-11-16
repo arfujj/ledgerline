@@ -26,3 +26,9 @@ smoke:
 
 dataroom:
 	uv run python scripts/generate_dataroom.py --seed 7
+
+corpus:
+	uv run python scripts/fetch_regulatory_corpus.py --slice small
+
+corpus-full:
+	uv run python scripts/fetch_regulatory_corpus.py --slice full

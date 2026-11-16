@@ -99,7 +99,8 @@ def build(m: dict[str, Any], seed: int) -> dict[str, Any]:
             "monthly publication of reserve composition examined by a registered public "
             "accounting firm, with executive certification.",
             [{"doc_id": "SOP-RSV-001", "section": "3. Reporting and Attestation"}],
-            "GENIUS Act s4(a) reserve disclosure/attestation (clause verified in Phase 2)",
+            "GENIUS Act s4(a)(1)(C) monthly reserve publication; s4(a)(3) monthly examination by a "
+            "registered public accounting firm and CEO/CFO certification",
             ["monthly", "attestation", "reserve", "quarterly"],
         ),
         _gap(
@@ -109,7 +110,8 @@ def build(m: dict[str, Any], seed: int) -> dict[str, Any]:
             "SOP-RSV-001 s5 states the token contract has no freeze, seize or burn function, so "
             "NovaPay could not comply with lawful orders.",
             [{"doc_id": "SOP-RSV-001", "section": "5. Token Controls"}],
-            "GENIUS Act requirement for technical capability to comply with lawful orders",
+            "GENIUS Act s4(a)(5)(A)(iv) technical capabilities to block, freeze and reject "
+            "impermissible transactions; s2(16) lawful orders to seize, freeze, burn",
             ["freeze", "seize", "burn", "lawful order"],
         ),
         _gap(
@@ -159,7 +161,7 @@ def build(m: dict[str, Any], seed: int) -> dict[str, Any]:
                 {"doc_id": "CTR-VAULTLINE-2026", "section": "5. Use of Reserve Assets"},
                 {"doc_id": "CTR-VAULTLINE-2026", "section": "2. Custody Account"},
             ],
-            "GENIUS Act s4(a) prohibition on rehypothecation of reserves",
+            "GENIUS Act s4(a)(2) prohibition on pledging, rehypothecating or reusing reserves",
             ["rehypothecat", "pledge", "re-use", "omnibus", "commingl"],
         ),
         _gap(
