@@ -1,6 +1,6 @@
 # Ledgerline evaluation report
 
-Generated 2026-11-16 22:09 UTC from commit `af3bc81` by `evals/report.py`. Every number below is read from `evals/results/*.json`, produced by actually running the evals. Nothing is hand-entered.
+Generated 2026-11-16 22:23 UTC from commit `f06e406` by `evals/report.py`. Every number below is read from `evals/results/*.json`, produced by actually running the evals. Nothing is hand-entered.
 
 ## Retrieval ablation
 
@@ -33,6 +33,15 @@ As-of questions over versioned rulemakings (OCC GENIUS Act issuer rule proposedâ
 | Hybrid, no version filter | 38 | 0.500 |
 | Hybrid + as-of version filter | 38 | 1.000 |
 
+## Answer-key scoring (seeded gaps and inefficiencies)
+
+Findings are matched to the eval-only answer key with a deterministic rule: the finding must cite one of the item's evidence documents and mention a distinctive keyword. Precision counts real but *unseeded* findings as false positives, so it is a lower bound. Unmatched findings are listed in `evals/results/answer_key.json` for human review.
+
+| Run | Findings | Precision | Recall | Severity exact | Severity Â±1 | Missed |
+|---|---|---|---|---|---|---|
+| Graph gap analysis: all findings | 24 | 0.583 | 0.909 | 0.500 | 0.900 | GAP-08 |
+| Graph gap analysis: confidence >= 0.6 | 18 | 0.611 | 0.818 | 0.556 | 0.889 | GAP-05, GAP-08 |
+
 ## Guardrails: prompt-injection detection at ingest
 
 | Seeded injection docs | Detected | Detection recall | False positives | Clean docs scanned |
@@ -41,4 +50,4 @@ As-of questions over versioned rulemakings (OCC GENIUS Act issuer rule proposedâ
 
 ## Not yet measured
 
-These metrics require later phases or an approved golden set, and are deliberately left blank rather than estimated: answer correctness, faithfulness, citation precision, numeric accuracy, refusal accuracy, hallucinated-claim rate, answer-key precision/recall, cost per engagement.
+These metrics require later phases or an approved golden set, and are deliberately left blank rather than estimated: answer correctness, faithfulness, citation precision, numeric accuracy, refusal accuracy, hallucinated-claim rate, cost per engagement.

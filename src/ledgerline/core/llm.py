@@ -14,7 +14,7 @@ from typing import Any, TypeVar
 
 import anthropic
 from anthropic.types import MessageParam, ToolParam
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 from ledgerline.core.audit import AuditEvent, AuditSink
 from ledgerline.core.budget import SpendTracker
@@ -34,6 +34,10 @@ T = TypeVar("T", bound=BaseModel)
 # Rough chars-per-token used only for the pre-call budget estimate.
 _CHARS_PER_TOKEN = 3.0
 _EST_OUTPUT_TOKENS_CAP = 2_000
+
+
+class LLMParseError(RuntimeError):
+    """Structured output could not be parsed even after a retry with a larger budget."""
 
 
 class LLMRefusal(RuntimeError):
@@ -159,7 +163,15 @@ class LLMClient:
         wire = {**payload, "model": provider_model_id(model, self.provider)}
         start = time.perf_counter()
         if output_model is not None:
-            response = self.sdk.messages.parse(output_format=output_model, **wire)
+            try:
+                response = self.sdk.messages.parse(output_format=output_model, **wire)
+            except ValidationError:
+                # Usually truncation (thinking counts against max_tokens): retry once, bigger.
+                wire["max_tokens"] = min(int(wire["max_tokens"]) * 3, 32_000)
+                try:
+                    response = self.sdk.messages.parse(output_format=output_model, **wire)
+                except ValidationError as exc:
+                    raise LLMParseError(f"{name}: unparseable structured output") from exc
         else:
             response = self.sdk.messages.create(**wire)
         latency_ms = (time.perf_counter() - start) * 1000

@@ -17,7 +17,7 @@ START, END = "<!-- METRICS:START -->", "<!-- METRICS:END -->"
 def block() -> str:
     report = (ROOT / "evals" / "report.md").read_text()
     sections = re.findall(
-        r"(## (?:Retrieval ablation|Temporal|Guardrails)[^\n]*\n.*?)(?=\n## |\Z)", report, re.S
+        r"(## (?:Retrieval ablation|Temporal|Answer-key|Guardrails)[^\n]*\n.*?)(?=\n## |\Z)", report, re.S
     )
     body = "\n".join(s.strip() for s in sections)
     body = body.replace("](charts/", "](evals/charts/")

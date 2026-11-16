@@ -75,3 +75,20 @@ A flagged document is quarantined. Its chunks are marked `trusted=false`, and an
 - **fill-in:** everything else
 
 **Consequences.** Every figure in the ROI summary is reproducible, and changing an assumption changes the deliverable in a traceable way. Property-based tests check that the model is monotone.
+
+## ADR-008: Selective graph extraction
+
+**Context.** Extracting a full knowledge graph from about 9 MB of regulation is expensive and noisy. Most clauses in a rule preamble are not obligations, and many bind regulators rather than the client.
+
+**Decision.** Only an explicit scope (`config/graph_scope.yaml`) becomes Requirement nodes:
+- GENIUS Act §§2(16), 4 and 10
+- Reg E §§1005.11 and 1005.13
+- 31 CFR §§1022.210 and 1010.430
+- the GOVERN, MAP and MANAGE passages of the NIST AI RMF
+- the client's own vendor-policy minimum terms
+
+Inside that scope, a modal-verb regex pre-filter sends only obligation-bearing chunks to the LLM. Controls are extracted from client policies, SOPs and contracts *as written, including deficiencies*. Requirements and controls share a fixed topic taxonomy. Candidate links come from topic overlap, and Haiku judges each applicable requirement against at most 8 candidate controls as satisfied, partial or not_satisfied.
+
+The gap set is a graph query: applicable requirements with no `SATISFIES {status:'satisfied'}` edge. Findings are aggregated per topic, and split by counterparty for contracts. Every node and edge carries its source document, clause or page, and the extraction model. An in-memory twin of the store runs the same gap semantics in tests.
+
+**Consequences.** A full graph build costs a few cents. Recall on the seeded gaps is measured in `evals/report.md`. Because the taxonomy is fixed, a gap outside it can be missed, which recall makes visible.

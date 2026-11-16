@@ -39,6 +39,10 @@ corpus-full:
 roi:
 	uv run python scripts/run_roi.py
 
+graph:
+	uv run python scripts/build_graph.py
+	uv run python -m evals.answer_key_eval
+
 ingest:
 	uv run python scripts/ingest.py
 

@@ -62,7 +62,7 @@ def build(m: dict[str, Any], seed: int) -> dict[str, Any]:
                 {"doc_id": "AUD-PLAN-2026", "section": "Deferrals"},
             ],
             "31 CFR 1022.210(d)(4) independent review of the MSB AML program",
-            ["independent", "testing", "review", "aml"],
+            ["independent review", "independent test", "independent audit"],
         ),
         _gap(
             "GAP-02",
@@ -75,7 +75,7 @@ def build(m: dict[str, Any], seed: int) -> dict[str, Any]:
                 {"doc_id": "SOP-AIS-001", "section": "2. Escalation"},
             ],
             "NIST AI RMF (GOVERN/MANAGE human oversight); Reg E error-resolution obligations",
-            ["human", "oversight", "ai", "agent", "autonom"],
+            ["human oversight", "human review", "without review", "escalat"],
         ),
         _gap(
             "GAP-03",
@@ -89,7 +89,7 @@ def build(m: dict[str, Any], seed: int) -> dict[str, Any]:
                 {"doc_id": "SOP-DSP-001", "section": "4. Investigation and Resolution"},
             ],
             "12 CFR 1005.11(c)",
-            ["provisional", "credit", "reg e", "45", "10 business"],
+            ["provisional credit", "10 business", "45 days", "45-day", "1005.11"],
         ),
         _gap(
             "GAP-04",
@@ -101,7 +101,7 @@ def build(m: dict[str, Any], seed: int) -> dict[str, Any]:
             [{"doc_id": "SOP-RSV-001", "section": "3. Reporting and Attestation"}],
             "GENIUS Act s4(a)(1)(C) monthly reserve publication; s4(a)(3) monthly examination by a "
             "registered public accounting firm and CEO/CFO certification",
-            ["monthly", "attestation", "reserve", "quarterly"],
+            ["monthly"],
         ),
         _gap(
             "GAP-05",
@@ -112,7 +112,7 @@ def build(m: dict[str, Any], seed: int) -> dict[str, Any]:
             [{"doc_id": "SOP-RSV-001", "section": "5. Token Controls"}],
             "GENIUS Act s4(a)(5)(A)(iv) technical capabilities to block, freeze and reject "
             "impermissible transactions; s2(16) lawful orders to seize, freeze, burn",
-            ["freeze", "seize", "burn", "lawful order"],
+            ["freeze", "seize", "burn"],
         ),
         _gap(
             "GAP-06",
@@ -122,7 +122,7 @@ def build(m: dict[str, Any], seed: int) -> dict[str, Any]:
             "requires 5 years.",
             [{"doc_id": "POL-DR-001", "section": "2. Retention Schedule"}],
             "31 CFR 1010.430(d) five-year retention",
-            ["retention", "cip", "5 years", "3 years"],
+            ["5 years", "five years", "3 years", "three years", "5-year", "five-year"],
         ),
         _gap(
             "GAP-07",
@@ -136,7 +136,7 @@ def build(m: dict[str, Any], seed: int) -> dict[str, Any]:
                 {"doc_id": "POL-VRM-001", "section": "4. Minimum Contract Terms"},
             ],
             "Internal policy POL-VRM-001 s4; third-party risk management expectations",
-            ["parley", "train", "audit", "data use"],
+            ["train", "right to audit", "audit right", "no audit"],
         ),
         _gap(
             "GAP-08",
@@ -149,7 +149,7 @@ def build(m: dict[str, Any], seed: int) -> dict[str, Any]:
                 {"doc_id": "CTR-RECONWORKS-2024", "section": "4. Service Levels"},
             ],
             "Internal policy POL-VRM-001 s4 (service levels with remedies)",
-            ["reconworks", "renew", "sla", "credit"],
+            ["renew", "service credit", "termination for convenience"],
         ),
         _gap(
             "GAP-09",
@@ -162,7 +162,7 @@ def build(m: dict[str, Any], seed: int) -> dict[str, Any]:
                 {"doc_id": "CTR-VAULTLINE-2026", "section": "2. Custody Account"},
             ],
             "GENIUS Act s4(a)(2) prohibition on pledging, rehypothecating or reusing reserves",
-            ["rehypothecat", "pledge", "re-use", "omnibus", "commingl"],
+            ["rehypothecat", "pledg", "commingl", "omnibus"],
         ),
         _gap(
             "GAP-10",
@@ -175,7 +175,7 @@ def build(m: dict[str, Any], seed: int) -> dict[str, Any]:
                 {"doc_id": "REG-VND-2026", "section": "Last reassessment"},
             ],
             "Third-party risk management: periodic reassessment by risk tier",
-            ["reassess", "monitor", "vendor", "cadence"],
+            ["reassess", "periodic", "cadence"],
         ),
         _gap(
             "GAP-11",
@@ -188,7 +188,7 @@ def build(m: dict[str, Any], seed: int) -> dict[str, Any]:
                 {"doc_id": "POL-MRM-001", "section": "3. Model Inventory"},
             ],
             "NIST AI RMF MAP/GOVERN: inventory and impact assessment of AI systems",
-            ["inventory", "model risk", "impact assessment"],
+            ["inventory", "impact assessment"],
         ),
     ]
     ineff = [

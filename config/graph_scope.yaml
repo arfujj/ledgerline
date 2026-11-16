@@ -1,0 +1,12 @@
+# Selective extraction scope (ADR-008). Only these sources become Requirement nodes, and
+# within them only obligation-bearing chunks (regex pre-filter) are sent to the LLM.
+requirement_sources:
+  - {doc_id: GENIUS-ACT-2025, clause_prefixes: ["2(16)", "4(a)", "4(b)", "4(c)", "10"]}
+  - {doc_id: CFR-12-1005.11}
+  - {doc_id: CFR-12-1005.13}
+  - {doc_id: CFR-31-1022.210}
+  - {doc_id: CFR-31-1010.430}
+  - {doc_id: NIST-AI-100-1, keyword: "(?i)(GOVERN|MANAGE|MAP)\\s?\\d|human oversight|third-party"}
+  - {doc_id: POL-VRM-001, sections: ["4. Minimum Contract Terms", "5. Ongoing Monitoring"], kind: internal_policy}
+control_doc_types: [policy, sop, contract]
+obligation_regex: "(?i)\\b(shall|must|may not|is required to|are required to|should)\\b"
