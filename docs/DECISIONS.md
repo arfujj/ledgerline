@@ -47,3 +47,11 @@ A flagged document is quarantined. Its chunks are marked `trusted=false`, and an
 ## ADR-005: Anchor-based retrieval relevance
 
 **Decision.** A gold source is a `(doc_id, verbatim anchor span)` pair. A retrieved chunk is relevant if it comes from the gold document and contains the anchor. This scores fixed-size and structure-aware chunkings the same way, which the ablation needs.
+
+## ADR-006: Process analytics in DuckDB SQL; PM4Py optional
+
+**Context.** PM4Py is AGPL-3.0. Ledgerline is a public repository that is meant to stay permissively licensed.
+
+**Decision.** All metrics are whitelisted, parameterised SQL over a DuckDB file that tools only ever open read-only. The metrics cover cycle time, SLA breach, manual share, rework, variants, handoffs, resource load and bottlenecks, the directly-follows graph, late steps, and ticket categories. PM4Py is the optional `mining` extra, and it is used only for inductive-miner process trees in `process/discovery.py`. Every query gets a deterministic `query_id` and is logged together with its SQL, parameters and a result hash. A deliverable cites it as `[q:<id>]`, and the verifier re-runs it and compares the hash.
+
+**Consequences.** Process numbers are reproducible and auditable, and the tools cannot write to the database (tested). Process maps degrade gracefully to the SQL directly-follows graph when PM4Py is not installed.

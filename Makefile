@@ -56,3 +56,6 @@ review:
 # macOS can mark files inside .venv as hidden; Python 3.12 then ignores the editable .pth.
 fix-venv:
 	chflags nohidden .venv/lib/python3.12/site-packages/*.pth 2>/dev/null || true
+
+process-db:
+	uv run python scripts/build_process_db.py

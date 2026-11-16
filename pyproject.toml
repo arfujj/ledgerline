@@ -7,6 +7,7 @@ dependencies = [
     "anthropic==2.9.0",
     "defusedxml==0.7.1",
     "docling==2.145.0",
+    "duckdb==2.0.0",
     "fastapi==0.163.1",
     "fastembed==0.9.1",
     "httpx==0.28.1",
@@ -25,6 +26,11 @@ dependencies = [
     "sqlalchemy==2.1.8",
     "sse-starlette==3.7.0",
     "uvicorn==0.54.0",
+]
+
+[project.optional-dependencies]
+mining = [
+    "pm4py==2.7.23.11",
 ]
 
 [build-system]
