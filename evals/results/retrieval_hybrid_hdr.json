@@ -1,0 +1,435 @@
+{
+ "n": 40,
+ "overall": {
+  "recall@5": 0.875,
+  "recall@10": 0.9,
+  "mrr": 0.6994,
+  "ndcg@10": 0.7501
+ },
+ "by_type": {
+  "fact": {
+   "recall@5": 0.913,
+   "recall@10": 0.913,
+   "mrr": 0.8261,
+   "ndcg@10": 0.8489
+  },
+  "regulatory": {
+   "recall@5": 0.75,
+   "recall@10": 0.8333,
+   "mrr": 0.498,
+   "ndcg@10": 0.5797
+  },
+  "table": {
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.6,
+   "ndcg@10": 0.7047
+  }
+ },
+ "latency_ms": {
+  "p50": 10.7,
+  "p95": 34.1
+ },
+ "rows": [
+  {
+   "qid": "S01",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 287.00374998152256,
+   "top_doc": "POL-DR-001"
+  },
+  {
+   "qid": "S02",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 34.120333031751215,
+   "top_doc": "SOP-KYC-001"
+  },
+  {
+   "qid": "S03",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 16.70783304143697,
+   "top_doc": "SOP-DSP-001"
+  },
+  {
+   "qid": "S04",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 7.879165932536125,
+   "top_doc": "POL-AI-001"
+  },
+  {
+   "qid": "S05",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 20.633584004826844,
+   "top_doc": "CTR-PARLEY-2026"
+  },
+  {
+   "qid": "S06",
+   "type": "fact",
+   "recall@5": 0.0,
+   "recall@10": 0.0,
+   "mrr": 0.0,
+   "ndcg@10": 0.0,
+   "latency_ms": 26.505666901357472,
+   "top_doc": "FR-2026-06974"
+  },
+  {
+   "qid": "S07",
+   "type": "fact",
+   "recall@5": 0.0,
+   "recall@10": 0.0,
+   "mrr": 0.0,
+   "ndcg@10": 0.0,
+   "latency_ms": 18.834250047802925,
+   "top_doc": "FR-2026-04089"
+  },
+  {
+   "qid": "S08",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 14.329792000353336,
+   "top_doc": "SOP-RSV-001"
+  },
+  {
+   "qid": "S09",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 14.89824999589473,
+   "top_doc": "CTR-RECONWORKS-2024"
+  },
+  {
+   "qid": "S10",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 11.209834017790854,
+   "top_doc": "POL-AML-001"
+  },
+  {
+   "qid": "S11",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 15.323915984481573,
+   "top_doc": "AUD-PLAN-2026"
+  },
+  {
+   "qid": "S12",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 6.3957920065149665,
+   "top_doc": "POL-VRM-001"
+  },
+  {
+   "qid": "S13",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 10.90158405713737,
+   "top_doc": "SOP-AIS-001"
+  },
+  {
+   "qid": "S14",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.5,
+   "ndcg@10": 0.6309297535714575,
+   "latency_ms": 9.610041975975037,
+   "top_doc": "SOP-REC-001"
+  },
+  {
+   "qid": "S15",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 11.534292018041015,
+   "top_doc": "PM-2026-014"
+  },
+  {
+   "qid": "S16",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 7.7017920557409525,
+   "top_doc": "PM-2026-031"
+  },
+  {
+   "qid": "S17",
+   "type": "table",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.5,
+   "ndcg@10": 0.6309297535714575,
+   "latency_ms": 6.948750000447035,
+   "top_doc": "POL-VRM-001"
+  },
+  {
+   "qid": "S18",
+   "type": "table",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.5,
+   "ndcg@10": 0.6309297535714575,
+   "latency_ms": 8.781207958236337,
+   "top_doc": "POL-AML-001"
+  },
+  {
+   "qid": "S19",
+   "type": "table",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.5,
+   "ndcg@10": 0.6309297535714575,
+   "latency_ms": 9.44620801601559,
+   "top_doc": "BRD-2026-Q3"
+  },
+  {
+   "qid": "S20",
+   "type": "table",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 9.366999962367117,
+   "top_doc": "BRD-2026-RISK"
+  },
+  {
+   "qid": "S21",
+   "type": "table",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.5,
+   "ndcg@10": 0.6309297535714575,
+   "latency_ms": 8.488958002999425,
+   "top_doc": "BRD-2026-AI"
+  },
+  {
+   "qid": "S22",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.5,
+   "ndcg@10": 0.6309297535714575,
+   "latency_ms": 7.692041923291981,
+   "top_doc": "POL-AML-001"
+  },
+  {
+   "qid": "S23",
+   "type": "regulatory",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 9.009333094581962,
+   "top_doc": "CFR-12-1005.11"
+  },
+  {
+   "qid": "S24",
+   "type": "regulatory",
+   "recall@5": 0.0,
+   "recall@10": 1.0,
+   "mrr": 0.14285714285714285,
+   "ndcg@10": 0.3333333333333333,
+   "latency_ms": 9.15683398488909,
+   "top_doc": "CFR-31-1022.210"
+  },
+  {
+   "qid": "S25",
+   "type": "regulatory",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.5,
+   "ndcg@10": 0.6309297535714575,
+   "latency_ms": 7.620292017236352,
+   "top_doc": "POL-AML-001"
+  },
+  {
+   "qid": "S26",
+   "type": "regulatory",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.5,
+   "ndcg@10": 0.6309297535714575,
+   "latency_ms": 8.147708955220878,
+   "top_doc": "FR-2026-06974"
+  },
+  {
+   "qid": "S27",
+   "type": "regulatory",
+   "recall@5": 0.0,
+   "recall@10": 0.0,
+   "mrr": 0.0,
+   "ndcg@10": 0.0,
+   "latency_ms": 8.052292047068477,
+   "top_doc": "FR-2026-06974"
+  },
+  {
+   "qid": "S28",
+   "type": "regulatory",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.25,
+   "ndcg@10": 0.43067655807339306,
+   "latency_ms": 10.39479102473706,
+   "top_doc": "GENIUS-ACT-2025"
+  },
+  {
+   "qid": "S29",
+   "type": "regulatory",
+   "recall@5": 0.0,
+   "recall@10": 0.0,
+   "mrr": 0.0,
+   "ndcg@10": 0.0,
+   "latency_ms": 9.240709012374282,
+   "top_doc": "FR-2026-04089"
+  },
+  {
+   "qid": "S30",
+   "type": "regulatory",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.3333333333333333,
+   "ndcg@10": 0.5,
+   "latency_ms": 16.714582918211818,
+   "top_doc": "FR-2026-21706"
+  },
+  {
+   "qid": "S31",
+   "type": "regulatory",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 14.995792065747082,
+   "top_doc": "FR-2026-07033"
+  },
+  {
+   "qid": "S32",
+   "type": "regulatory",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 6.811958039179444,
+   "top_doc": "CFR-12-1026.13"
+  },
+  {
+   "qid": "S33",
+   "type": "regulatory",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.25,
+   "ndcg@10": 0.43067655807339306,
+   "latency_ms": 7.297458010725677,
+   "top_doc": "NIST-AI-600-1"
+  },
+  {
+   "qid": "S34",
+   "type": "regulatory",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 15.42795798741281,
+   "top_doc": "EU-AI-ACT-2024"
+  },
+  {
+   "qid": "S35",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.5,
+   "ndcg@10": 0.6309297535714575,
+   "latency_ms": 15.780791058205068,
+   "top_doc": "BRD-2026-Q3"
+  },
+  {
+   "qid": "S36",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 11.16562495008111,
+   "top_doc": "SOP-KYC-001"
+  },
+  {
+   "qid": "S37",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 7.535541895776987,
+   "top_doc": "PM-2026-027"
+  },
+  {
+   "qid": "S38",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 13.930708984844387,
+   "top_doc": "POL-AI-001"
+  },
+  {
+   "qid": "S39",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "ndcg@10": 1.0,
+   "latency_ms": 10.742958984337747,
+   "top_doc": "POL-VRM-001"
+  },
+  {
+   "qid": "S40",
+   "type": "fact",
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.5,
+   "ndcg@10": 0.6309297535714575,
+   "latency_ms": 11.594624957069755,
+   "top_doc": "GENIUS-ACT-2025"
+  }
+ ]
+}

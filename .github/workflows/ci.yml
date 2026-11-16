@@ -2,7 +2,7 @@ name: ci
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, develop]
 
 jobs:
   check:
@@ -16,4 +16,31 @@ jobs:
       - run: uv sync --frozen
       - run: make lint
       - run: make typecheck
+      - run: uv run python scripts/generate_dataroom.py --seed 7
       - run: make test
+      - run: uv run python scripts/build_readme_metrics.py --check
+
+  eval-subset:
+    # Deterministic retrieval + guardrail evals. No API key needed; fails on regressions.
+    runs-on: ubuntu-24.04
+    needs: check
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.10.6"
+      - run: uv python install 3.12
+      - run: uv sync --frozen
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/huggingface
+            /tmp/fastembed_cache
+            corpus/regulatory
+            data/cache/embeddings.sqlite
+          key: eval-${{ hashFiles('uv.lock', 'src/ledgerline/corpus/sources.py') }}
+      - run: uv run python scripts/generate_dataroom.py --seed 7
+      - run: uv run python scripts/fetch_regulatory_corpus.py --slice small
+      - run: uv run python scripts/ingest.py --skip-index
+      - run: uv run python evals/guardrail_eval.py
+      - run: uv run python -m evals.ci_subset

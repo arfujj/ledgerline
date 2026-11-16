@@ -32,3 +32,22 @@ corpus:
 
 corpus-full:
 	uv run python scripts/fetch_regulatory_corpus.py --slice full
+
+ingest:
+	uv run python scripts/ingest.py
+
+eval-retrieval:
+	uv run python -m evals.run_retrieval
+	uv run python evals/guardrail_eval.py
+	uv run python -m evals.report
+	uv run python scripts/build_readme_metrics.py
+
+eval-ci:
+	uv run python evals/guardrail_eval.py
+	uv run python -m evals.ci_subset
+
+golden:
+	uv run python scripts/generate_golden.py
+
+review:
+	uv run python scripts/review_golden.py

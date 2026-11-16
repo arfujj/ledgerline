@@ -1,0 +1,35 @@
+# Ledgerline evaluation report
+
+Generated 2026-11-16 21:43 UTC from commit `7249b23` by `evals/report.py`. Every number below is read from `evals/results/*.json`, produced by actually running the evals. Nothing is hand-entered.
+
+## Retrieval ablation
+
+Dataset: **seed retrieval set v0**, made up of author-written questions (`evals/data/seed_retrieval.jsonl`) over the data room and regulatory corpus. Gold sources are a document plus a verbatim anchor span, so every chunking strategy is scored the same way. Retrieval is local (FastEmbed), so these runs cost $0.
+
+| Configuration | n | Recall@5 | Recall@10 | MRR | nDCG@10 | p50 ms | p95 ms |
+|---|---|---|---|---|---|---|---|
+| Naive RAG (fixed chunks, dense) | 40 | 0.675 | 0.700 | 0.623 | 0.642 | 7.7 | 23.8 |
+| Hybrid (structure chunks, dense+BM25) | 40 | 0.725 | 0.825 | 0.589 | 0.645 | 7.8 | 10.3 |
+| Hybrid + rerank | 40 | 0.775 | 0.800 | 0.705 | 0.728 | 2188.6 | 3640.4 |
+| Hybrid + contextual headers | 40 | 0.875 | 0.900 | 0.699 | 0.750 | 10.7 | 34.1 |
+| Hybrid + rerank + contextual headers | 40 | 0.800 | 0.800 | 0.746 | 0.760 | 2172.4 | 2776.4 |
+
+![Retrieval ablation](charts/retrieval_ablation.png)
+
+Per-type results for the best configuration (**Hybrid + rerank + contextual headers**):
+
+| Type | Recall@5 | Recall@10 | MRR | nDCG@10 |
+|---|---|---|---|---|
+| fact | 0.870 | 0.870 | 0.819 | 0.832 |
+| regulatory | 0.583 | 0.583 | 0.542 | 0.553 |
+| table | 1.000 | 1.000 | 0.900 | 0.926 |
+
+## Guardrails: prompt-injection detection at ingest
+
+| Seeded injection docs | Detected | Detection recall | False positives | Clean docs scanned |
+|---|---|---|---|---|
+| 1 | 1 | 1.00 | 0 | 55 |
+
+## Not yet measured
+
+These metrics require later phases or an approved golden set, and are deliberately left blank rather than estimated: answer correctness, faithfulness, citation precision, numeric accuracy, temporal correctness, refusal accuracy, hallucinated-claim rate, answer-key precision/recall, cost per engagement.

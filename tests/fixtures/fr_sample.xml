@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RULE>
+<PREAMB>
+<HD SOURCE="HED">SUMMARY:</HD>
+<P>The OCC is adopting a final rule.</P>
+</PREAMB>
+<SUPLINF>
+<HD SOURCE="HED">SUPPLEMENTARY INFORMATION:</HD>
+<HD SOURCE="HD1">I. Background</HD>
+<P>Background text one.<PRTPAGE P="101"/></P>
+<P>Background text two.</P>
+<GPOTABLE><TTITLE>Table 1</TTITLE><BOXHD><CHED>Item</CHED><CHED>Value</CHED></BOXHD>
+<ROW><ENT>Reserve</ENT><ENT>100%</ENT></ROW></GPOTABLE>
+<REGTEXT>
+<SECTION>
+<SECTNO>§ 15.1</SECTNO>
+<SUBJECT>Scope.</SUBJECT>
+<P>(a) <E>Purpose</E>—(1) This part implements the Act.</P>
+<P>(2) It applies to issuers.</P>
+<PRTPAGE P="102"/>
+<P>(b) <E>Scope.</E> This part applies to OCC entities.</P>
+</SECTION>
+</REGTEXT>
+</SUPLINF>
+</RULE>

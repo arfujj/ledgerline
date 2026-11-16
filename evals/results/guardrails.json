@@ -1,0 +1,12 @@
+{
+ "seeded": [
+  "CTR-CARDINAL-ADD-2026"
+ ],
+ "quarantined": [
+  "CTR-CARDINAL-ADD-2026"
+ ],
+ "detection_recall": 1.0,
+ "false_positives": [],
+ "clean_docs": 55,
+ "false_positive_rate": 0.0
+}
