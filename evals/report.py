@@ -160,24 +160,32 @@ def main() -> None:
     ak = RES / "answer_key.json"
     if ak.exists():
         a = json.loads(ak.read_text())
-        labels = {"gaps_all": "Graph gap analysis: all findings",
-                  "gaps_conf_ge_0.6": "Graph gap analysis: confidence >= 0.6",
-                  "engagement_gaps": "Full engagement: compliance gaps",
-                  "engagement_inefficiencies": "Full engagement: inefficiencies"}
-        lines += ["## Answer-key scoring (seeded gaps and inefficiencies)", "",
-                  "Findings are matched to the eval-only answer key with a deterministic rule: "
-                  "the finding must cite one of the item's evidence documents and mention a "
-                  "distinctive keyword. Precision counts real but *unseeded* findings as "
-                  "false positives, so it is a lower bound. Unmatched findings are listed in "
-                  "`evals/results/answer_key.json` for human review.", "",
-                  "| Run | Findings | Precision | Recall | Severity exact | Severity ±1 | Missed |",
-                  "|---|---|---|---|---|---|---|"]
+        labels = {
+            "gaps_all": "Graph gap analysis: all findings",
+            "gaps_conf_ge_0.6": "Graph gap analysis: confidence >= 0.6",
+            "engagement_gaps": "Full engagement: compliance gaps",
+            "engagement_inefficiencies": "Full engagement: inefficiencies",
+        }
+        lines += [
+            "## Answer-key scoring (seeded gaps and inefficiencies)",
+            "",
+            "Findings are matched to the eval-only answer key with a deterministic rule: "
+            "the finding must cite one of the item's evidence documents and mention a "
+            "distinctive keyword. Precision counts real but *unseeded* findings as "
+            "false positives, so it is a lower bound. Unmatched findings are listed in "
+            "`evals/results/answer_key.json` for human review.",
+            "",
+            "| Run | Findings | Precision | Recall | Severity exact | Severity ±1 | Missed |",
+            "|---|---|---|---|---|---|---|",
+        ]
         for k, label in labels.items():
             if k in a:
                 v = a[k]
-                lines.append(f"| {label} | {v['findings']} | {v['precision']:.3f} | "
-                             f"{v['recall']:.3f} | {v['severity_exact']:.3f} | "
-                             f"{v['severity_within_one']:.3f} | {', '.join(v['missed']) or '-'} |")
+                lines.append(
+                    f"| {label} | {v['findings']} | {v['precision']:.3f} | "
+                    f"{v['recall']:.3f} | {v['severity_exact']:.3f} | "
+                    f"{v['severity_within_one']:.3f} | {', '.join(v['missed']) or '-'} |"
+                )
         lines.append("")
     g = RES / "guardrails.json"
     if g.exists():
