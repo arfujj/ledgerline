@@ -287,18 +287,35 @@ def template_candidates() -> list[dict[str, Any]]:
         if old not in by or new not in by:
             continue
         o, n = by[old], by[new]
-        probes = [
-            (date.fromisoformat(o["publication_date"]).replace(day=15), old, "proposed rule"),
-            (date(2026, 11, 16), new, "current version"),
-        ]
-        if n.get("effective_date"):
-            probes.append(
-                (
-                    date.fromisoformat(n["effective_date"]).replace(day=28),
+        o_pub = date.fromisoformat(o["publication_date"])
+        n_pub = date.fromisoformat(n["publication_date"])
+        n_eff = date.fromisoformat(n["effective_date"]) if n.get("effective_date") else None
+        probes: list[tuple[date, str, str]] = []
+        d = (
+            date(o_pub.year, o_pub.month, 15)
+            if o_pub.day <= 15
+            else date(o_pub.year + (o_pub.month == 12), o_pub.month % 12 + 1, 15)
+        )
+        end = date(2027, 6, 15)
+        step = 0
+        while d <= end:
+            if d < n_pub:
+                gold_doc, status = old, "proposed rule"
+            elif n_eff and d < n_eff:
+                gold_doc, status = new, "adopted, not yet effective"
+            else:
+                gold_doc, status = (
                     new,
-                    "final rule in effect",
+                    (
+                        "final rule in effect"
+                        if n["doc_type"] == "final_rule"
+                        else "current proposal"
+                    ),
                 )
-            )
+            if step % 2 == 0 or gold_doc == new:
+                probes.append((d, gold_doc, status))
+            step += 1
+            d = date(d.year + (d.month == 12), d.month % 12 + 1, 15)
         for as_of, gold_doc, status in probes:
             out.append(
                 {

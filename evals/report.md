@@ -1,6 +1,6 @@
 # Ledgerline evaluation report
 
-Generated 2026-11-16 21:43 UTC from commit `7249b23` by `evals/report.py`. Every number below is read from `evals/results/*.json`, produced by actually running the evals. Nothing is hand-entered.
+Generated 2026-11-16 22:09 UTC from commit `2081316` by `evals/report.py`. Every number below is read from `evals/results/*.json`, produced by actually running the evals. Nothing is hand-entered.
 
 ## Retrieval ablation
 
@@ -24,6 +24,15 @@ Per-type results for the best configuration (**Hybrid + rerank + contextual head
 | regulatory | 0.583 | 0.583 | 0.542 | 0.553 |
 | table | 1.000 | 1.000 | 0.900 | 0.926 |
 
+## Temporal (as-of) correctness
+
+As-of questions over versioned rulemakings (OCC GENIUS Act issuer rule proposed→final; FinCEN AML/CFT program NPRM 2024→2026). An item is correct when the top retrieved chunk from that lineage comes from the version that governed on the as-of date. Items are built from the corpus manifest by a template.
+
+| Retrieval | n | Temporal correctness |
+|---|---|---|
+| Hybrid, no version filter | 38 | 0.500 |
+| Hybrid + as-of version filter | 38 | 1.000 |
+
 ## Guardrails: prompt-injection detection at ingest
 
 | Seeded injection docs | Detected | Detection recall | False positives | Clean docs scanned |
@@ -32,4 +41,4 @@ Per-type results for the best configuration (**Hybrid + rerank + contextual head
 
 ## Not yet measured
 
-These metrics require later phases or an approved golden set, and are deliberately left blank rather than estimated: answer correctness, faithfulness, citation precision, numeric accuracy, temporal correctness, refusal accuracy, hallucinated-claim rate, answer-key precision/recall, cost per engagement.
+These metrics require later phases or an approved golden set, and are deliberately left blank rather than estimated: answer correctness, faithfulness, citation precision, numeric accuracy, refusal accuracy, hallucinated-claim rate, answer-key precision/recall, cost per engagement.

@@ -21,7 +21,7 @@ make smoke                # one Claude Haiku 5.5 call through the audited client
 ## Measured results
 
 <!-- METRICS:START -->
-_Copied verbatim from [evals/report.md](evals/report.md) (Generated 2026-11-16 21:43 UTC from commit `7249b23`)._
+_Copied verbatim from [evals/report.md](evals/report.md) (Generated 2026-11-16 22:09 UTC from commit `2081316`)._
 
 ## Retrieval ablation
 
@@ -44,6 +44,14 @@ Per-type results for the best configuration (**Hybrid + rerank + contextual head
 | fact | 0.870 | 0.870 | 0.819 | 0.832 |
 | regulatory | 0.583 | 0.583 | 0.542 | 0.553 |
 | table | 1.000 | 1.000 | 0.900 | 0.926 |
+## Temporal (as-of) correctness
+
+As-of questions over versioned rulemakings (OCC GENIUS Act issuer rule proposed→final; FinCEN AML/CFT program NPRM 2024→2026). An item is correct when the top retrieved chunk from that lineage comes from the version that governed on the as-of date. Items are built from the corpus manifest by a template.
+
+| Retrieval | n | Temporal correctness |
+|---|---|---|
+| Hybrid, no version filter | 38 | 0.500 |
+| Hybrid + as-of version filter | 38 | 1.000 |
 ## Guardrails: prompt-injection detection at ingest
 
 | Seeded injection docs | Detected | Detection recall | False positives | Clean docs scanned |

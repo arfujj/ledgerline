@@ -38,6 +38,7 @@ ingest:
 
 eval-retrieval:
 	uv run python -m evals.run_retrieval
+	uv run python -m evals.temporal_eval
 	uv run python evals/guardrail_eval.py
 	uv run python -m evals.report
 	uv run python scripts/build_readme_metrics.py
@@ -51,3 +52,7 @@ golden:
 
 review:
 	uv run python scripts/review_golden.py
+
+# macOS can mark files inside .venv as hidden; Python 3.12 then ignores the editable .pth.
+fix-venv:
+	chflags nohidden .venv/lib/python3.12/site-packages/*.pth 2>/dev/null || true

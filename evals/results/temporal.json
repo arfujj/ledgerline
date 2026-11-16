@@ -1,0 +1,622 @@
+{
+ "summary": {
+  "no_filter": {
+   "n": 38,
+   "temporal_correctness": 0.5
+  },
+  "as_of_filter": {
+   "n": 38,
+   "temporal_correctness": 1.0
+  }
+ },
+ "rows": [
+  {
+   "mode": "no_filter",
+   "qid": "G0018",
+   "as_of": "2026-03-15",
+   "gold": "FR-2026-04089",
+   "top": "FR-2026-21706",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0019",
+   "as_of": "2026-05-15",
+   "gold": "FR-2026-04089",
+   "top": "FR-2026-21706",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0020",
+   "as_of": "2026-07-15",
+   "gold": "FR-2026-04089",
+   "top": "FR-2026-21706",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0021",
+   "as_of": "2026-09-15",
+   "gold": "FR-2026-04089",
+   "top": "FR-2026-21706",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0022",
+   "as_of": "2026-11-15",
+   "gold": "FR-2026-21706",
+   "top": "FR-2026-21706",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0023",
+   "as_of": "2026-12-15",
+   "gold": "FR-2026-21706",
+   "top": "FR-2026-21706",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0024",
+   "as_of": "2027-01-15",
+   "gold": "FR-2026-21706",
+   "top": "FR-2026-21706",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0025",
+   "as_of": "2027-02-15",
+   "gold": "FR-2026-21706",
+   "top": "FR-2026-21706",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0026",
+   "as_of": "2027-03-15",
+   "gold": "FR-2026-21706",
+   "top": "FR-2026-04089",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0027",
+   "as_of": "2027-04-15",
+   "gold": "FR-2026-21706",
+   "top": "FR-2026-21706",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0028",
+   "as_of": "2027-05-15",
+   "gold": "FR-2026-21706",
+   "top": "FR-2026-21706",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0029",
+   "as_of": "2027-06-15",
+   "gold": "FR-2026-21706",
+   "top": "FR-2026-21706",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0030",
+   "as_of": "2024-07-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0031",
+   "as_of": "2024-09-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0032",
+   "as_of": "2024-11-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0033",
+   "as_of": "2025-01-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0034",
+   "as_of": "2025-03-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0035",
+   "as_of": "2025-05-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0036",
+   "as_of": "2025-07-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0037",
+   "as_of": "2025-09-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0038",
+   "as_of": "2025-11-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0039",
+   "as_of": "2026-01-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0040",
+   "as_of": "2026-03-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0041",
+   "as_of": "2026-04-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2024-14414",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0042",
+   "as_of": "2026-05-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2024-14414",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0043",
+   "as_of": "2026-06-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2026-07033",
+   "correct": true
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0044",
+   "as_of": "2026-07-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2024-14414",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0045",
+   "as_of": "2026-08-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2024-14414",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0046",
+   "as_of": "2026-09-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2024-14414",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0047",
+   "as_of": "2026-10-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2024-14414",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0048",
+   "as_of": "2026-11-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2024-14414",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0049",
+   "as_of": "2026-12-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2024-14414",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0050",
+   "as_of": "2027-01-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2024-14414",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0051",
+   "as_of": "2027-02-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2024-14414",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0052",
+   "as_of": "2027-03-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2024-14414",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0053",
+   "as_of": "2027-04-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2024-14414",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0054",
+   "as_of": "2027-05-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2024-14414",
+   "correct": false
+  },
+  {
+   "mode": "no_filter",
+   "qid": "G0055",
+   "as_of": "2027-06-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2024-14414",
+   "correct": false
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0018",
+   "as_of": "2026-03-15",
+   "gold": "FR-2026-04089",
+   "top": "FR-2026-04089",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0019",
+   "as_of": "2026-05-15",
+   "gold": "FR-2026-04089",
+   "top": "FR-2026-04089",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0020",
+   "as_of": "2026-07-15",
+   "gold": "FR-2026-04089",
+   "top": "FR-2026-04089",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0021",
+   "as_of": "2026-09-15",
+   "gold": "FR-2026-04089",
+   "top": "FR-2026-04089",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0022",
+   "as_of": "2026-11-15",
+   "gold": "FR-2026-21706",
+   "top": "FR-2026-21706",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0023",
+   "as_of": "2026-12-15",
+   "gold": "FR-2026-21706",
+   "top": "FR-2026-21706",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0024",
+   "as_of": "2027-01-15",
+   "gold": "FR-2026-21706",
+   "top": "FR-2026-21706",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0025",
+   "as_of": "2027-02-15",
+   "gold": "FR-2026-21706",
+   "top": "FR-2026-21706",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0026",
+   "as_of": "2027-03-15",
+   "gold": "FR-2026-21706",
+   "top": "FR-2026-21706",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0027",
+   "as_of": "2027-04-15",
+   "gold": "FR-2026-21706",
+   "top": "FR-2026-21706",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0028",
+   "as_of": "2027-05-15",
+   "gold": "FR-2026-21706",
+   "top": "FR-2026-21706",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0029",
+   "as_of": "2027-06-15",
+   "gold": "FR-2026-21706",
+   "top": "FR-2026-21706",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0030",
+   "as_of": "2024-07-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0031",
+   "as_of": "2024-09-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0032",
+   "as_of": "2024-11-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0033",
+   "as_of": "2025-01-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0034",
+   "as_of": "2025-03-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0035",
+   "as_of": "2025-05-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0036",
+   "as_of": "2025-07-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0037",
+   "as_of": "2025-09-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0038",
+   "as_of": "2025-11-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0039",
+   "as_of": "2026-01-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0040",
+   "as_of": "2026-03-15",
+   "gold": "FR-2024-14414",
+   "top": "FR-2024-14414",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0041",
+   "as_of": "2026-04-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2026-07033",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0042",
+   "as_of": "2026-05-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2026-07033",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0043",
+   "as_of": "2026-06-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2026-07033",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0044",
+   "as_of": "2026-07-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2026-07033",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0045",
+   "as_of": "2026-08-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2026-07033",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0046",
+   "as_of": "2026-09-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2026-07033",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0047",
+   "as_of": "2026-10-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2026-07033",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0048",
+   "as_of": "2026-11-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2026-07033",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0049",
+   "as_of": "2026-12-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2026-07033",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0050",
+   "as_of": "2027-01-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2026-07033",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0051",
+   "as_of": "2027-02-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2026-07033",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0052",
+   "as_of": "2027-03-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2026-07033",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0053",
+   "as_of": "2027-04-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2026-07033",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0054",
+   "as_of": "2027-05-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2026-07033",
+   "correct": true
+  },
+  {
+   "mode": "as_of_filter",
+   "qid": "G0055",
+   "as_of": "2027-06-15",
+   "gold": "FR-2026-07033",
+   "top": "FR-2026-07033",
+   "correct": true
+  }
+ ]
+}

@@ -133,6 +133,30 @@ def main() -> None:
                 f"{m['ndcg@10']:.3f} |"
             )
         lines.append("")
+    tp = RES / "temporal.json"
+    if tp.exists():
+        t = json.loads(tp.read_text())["summary"]
+        lines += [
+            "## Temporal (as-of) correctness",
+            "",
+            "As-of questions over versioned rulemakings (OCC GENIUS Act issuer rule "
+            "proposed→final; FinCEN AML/CFT program NPRM 2024→2026). An item is correct "
+            "when the top retrieved chunk from that lineage comes from the version that "
+            "governed on the as-of date. Items are built from the corpus manifest by a "
+            "template.",
+            "",
+            "| Retrieval | n | Temporal correctness |",
+            "|---|---|---|",
+        ]
+        for mode, label in (
+            ("no_filter", "Hybrid, no version filter"),
+            ("as_of_filter", "Hybrid + as-of version filter"),
+        ):
+            if mode in t:
+                lines.append(
+                    f"| {label} | {t[mode]['n']} | {t[mode]['temporal_correctness']:.3f} |"
+                )
+        lines.append("")
     g = RES / "guardrails.json"
     if g.exists():
         gr = json.loads(g.read_text())
@@ -152,7 +176,7 @@ def main() -> None:
         "",
         "These metrics require later phases or an approved golden set, and are deliberately "
         "left blank rather than estimated: answer correctness, faithfulness, citation "
-        "precision, numeric accuracy, temporal correctness, refusal accuracy, "
+        "precision, numeric accuracy, refusal accuracy, "
         "hallucinated-claim rate, answer-key precision/recall, cost per engagement.",
         "",
     ]
