@@ -21,6 +21,8 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
+from pydantic import BaseModel
+
 from ledgerline.core.audit import AuditEvent, JsonlAuditSink
 from ledgerline.core.budget import SpendTracker
 from ledgerline.core.models_registry import PROFILES, cost_usd
@@ -329,9 +331,13 @@ def main() -> int:
     )
     if args.dry_run:
         return 0
-    if s.anthropic_api_key is None:
-        print("ANTHROPIC_API_KEY not set; writing template candidates only.")
+    if not s.llm_configured():
+        print("No LLM key set; writing template candidates only.")
         _write(templ, [])
+        return 0
+    if s.resolved_provider() == "openrouter":
+        llm = _generate_sync(reqs, s)
+        _write(templ, llm)
         return 0
     spend = SpendTracker(s.max_usd_per_run, s.max_usd_per_day, s.data_dir / "spend.json")
     spend.check("golden-gen", est)
@@ -400,6 +406,66 @@ def main() -> int:
     _write(templ, llm)
     print(f"wrote {len(templ) + len(llm)} candidates; actual cost ${total:.4f}")
     return 0
+
+
+class _Item(BaseModel):
+    question: str
+    answer: str
+    anchor: str
+    anchor_doc: str
+
+
+class _Items(BaseModel):
+    items: list[_Item]
+
+
+def _generate_sync(reqs: list[dict[str, Any]], s: Any) -> list[dict[str, Any]]:
+    """Concurrent synchronous calls through the audited LLM client (used for OpenRouter)."""
+    from concurrent.futures import ThreadPoolExecutor
+
+    from ledgerline.core.llm import LLMClient
+    from ledgerline.core.llm_cache import ResponseCache
+
+    client = LLMClient(
+        s,
+        JsonlAuditSink(s.audit_log_path),
+        SpendTracker(s.max_usd_per_run, s.max_usd_per_day, s.data_dir / "spend.json"),
+        ResponseCache(s.llm_cache_path),
+    )
+
+    def one(r: dict[str, Any]) -> list[dict[str, Any]]:
+        try:
+            res = client.complete(
+                run_id="golden-gen",
+                name=f"golden:{r['type']}",
+                system=SYSTEM,
+                max_tokens=2000,
+                output_model=_Items,
+                model=client.profile.judge,
+                messages=[{"role": "user", "content": r["prompt"]}],
+            )
+        except Exception as exc:
+            print(f"  {r['custom_id']} failed: {type(exc).__name__}: {exc}"[:200])
+            return []
+        items = res.parsed.items if res.parsed else []
+        return [
+            {
+                "type": r["type"],
+                "question": it.question,
+                "answer": it.answer,
+                "source": "llm",
+                "excerpts": r["excerpts"],
+                "gold": ([{"doc_id": it.anchor_doc, "anchor": it.anchor}] if it.anchor else []),
+                "unanswerable": r["type"] == "unanswerable",
+            }
+            for it in items
+        ]
+
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        results = list(pool.map(one, reqs))
+    spent = client.spend.run_spend("golden-gen")
+    print(f"generated via {client.provider}; spent ${spent:.4f}")
+    return [x for batch in results for x in batch]
 
 
 def _write(templ: list[dict[str, Any]], llm: list[dict[str, Any]]) -> None:

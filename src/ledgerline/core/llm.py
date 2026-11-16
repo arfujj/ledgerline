@@ -19,7 +19,14 @@ from pydantic import BaseModel
 from ledgerline.core.audit import AuditEvent, AuditSink
 from ledgerline.core.budget import SpendTracker
 from ledgerline.core.llm_cache import ResponseCache, request_key
-from ledgerline.core.models_registry import PRICES, PROFILES, Effort, ModelProfile, cost_usd
+from ledgerline.core.models_registry import (
+    PRICES,
+    PROFILES,
+    Effort,
+    ModelProfile,
+    cost_usd,
+    provider_model_id,
+)
 from ledgerline.core.settings import Settings
 
 T = TypeVar("T", bound=BaseModel)
@@ -77,10 +84,23 @@ class LLMClient:
         self._sdk = sdk
 
     @property
+    def provider(self) -> str:
+        return self.settings.resolved_provider() or "anthropic"
+
+    @property
     def sdk(self) -> Any:
         if self._sdk is None:
-            key = self.settings.anthropic_api_key
-            self._sdk = anthropic.Anthropic(api_key=key.get_secret_value() if key else None)
+            if self.provider == "openrouter":
+                key = self.settings.openrouter_api_key
+                if key is None:
+                    raise RuntimeError("OPENROUTER_API_KEY is not set")
+                # OpenRouter serves the Anthropic Messages API; same SDK, different base URL.
+                self._sdk = anthropic.Anthropic(
+                    api_key=key.get_secret_value(), base_url=self.settings.openrouter_base_url
+                )
+            else:
+                key = self.settings.anthropic_api_key
+                self._sdk = anthropic.Anthropic(api_key=key.get_secret_value() if key else None)
         return self._sdk
 
     def _estimate(self, model: str, payload: dict[str, Any], max_tokens: int) -> float:
@@ -136,11 +156,12 @@ class LLMClient:
 
         self.spend.check(run_id, self._estimate(model, payload, max_tokens))
 
+        wire = {**payload, "model": provider_model_id(model, self.provider)}
         start = time.perf_counter()
         if output_model is not None:
-            response = self.sdk.messages.parse(output_format=output_model, **payload)
+            response = self.sdk.messages.parse(output_format=output_model, **wire)
         else:
-            response = self.sdk.messages.create(**payload)
+            response = self.sdk.messages.create(**wire)
         latency_ms = (time.perf_counter() - start) * 1000
 
         if response.stop_reason == "refusal":
@@ -247,6 +268,7 @@ class LLMClient:
                 latency_ms=result.latency_ms,
                 cached=result.cached,
                 payload={
+                    "provider": self.provider,
                     "effort": payload["output_config"]["effort"],
                     "max_tokens": payload["max_tokens"],
                     "stop_reason": result.stop_reason,

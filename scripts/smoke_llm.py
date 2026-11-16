@@ -14,8 +14,8 @@ from ledgerline.core.settings import get_settings
 
 def main() -> int:
     s = get_settings()
-    if s.anthropic_api_key is None:
-        print("ANTHROPIC_API_KEY not set; skipping smoke call.")
+    if not s.llm_configured():
+        print("No ANTHROPIC_API_KEY or OPENROUTER_API_KEY set; skipping smoke call.")
         return 0
     run_id = f"smoke-{uuid.uuid4().hex[:8]}"
     client = LLMClient(
@@ -30,7 +30,10 @@ def main() -> int:
         max_tokens=64,
         messages=[{"role": "user", "content": "Reply with the single word: ready"}],
     )
-    print(f"run={run_id} model={r.model} text={r.text!r} cost=${r.cost_usd:.6f} cached={r.cached}")
+    print(
+        f"run={run_id} provider={client.provider} model={r.model} text={r.text!r} "
+        f"cost=${r.cost_usd:.6f} cached={r.cached}"
+    )
     return 0
 
 

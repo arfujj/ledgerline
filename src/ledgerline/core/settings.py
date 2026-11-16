@@ -6,10 +6,11 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 
-from pydantic import Field, SecretStr
+from pydantic import Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 ModelProfileName = Literal["cheap", "quality"]
+ProviderName = Literal["auto", "anthropic", "openrouter"]
 
 
 class Settings(BaseSettings):
@@ -19,6 +20,12 @@ class Settings(BaseSettings):
 
     # Anthropic. Read without the prefix so the SDK convention keeps working.
     anthropic_api_key: SecretStr | None = Field(default=None, validation_alias="ANTHROPIC_API_KEY")
+    openrouter_api_key: SecretStr | None = Field(
+        default=None, validation_alias="OPENROUTER_API_KEY"
+    )
+    # auto: Anthropic direct if ANTHROPIC_API_KEY is set, else OpenRouter if its key is set.
+    llm_provider: ProviderName = "auto"
+    openrouter_base_url: str = "https://openrouter.ai/api"
     model_profile: ModelProfileName = "cheap"
 
     # Spend guards (USD). Enforced in core.budget before and after every LLM call.
@@ -39,6 +46,25 @@ class Settings(BaseSettings):
     neo4j_user: str = "neo4j"
     neo4j_password: SecretStr = SecretStr("ledgerline-dev")
     postgres_dsn: str = "postgresql+psycopg://ledgerline:ledgerline@localhost:55432/ledgerline"
+
+    @field_validator("anthropic_api_key", "openrouter_api_key", mode="before")
+    @classmethod
+    def _blank_is_none(cls, v: object) -> object:
+        if v is None or (isinstance(v, str) and not v.strip()):
+            return None
+        return v
+
+    def resolved_provider(self) -> Literal["anthropic", "openrouter"] | None:
+        if self.llm_provider != "auto":
+            return self.llm_provider
+        if self.anthropic_api_key is not None:
+            return "anthropic"
+        if self.openrouter_api_key is not None:
+            return "openrouter"
+        return None
+
+    def llm_configured(self) -> bool:
+        return self.resolved_provider() is not None
 
 
 @lru_cache(maxsize=1)

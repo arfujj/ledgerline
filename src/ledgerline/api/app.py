@@ -20,7 +20,8 @@ def health() -> dict[str, Any]:
         "status": "ok",
         "version": __version__,
         "model_profile": s.model_profile,
-        "llm_configured": s.anthropic_api_key is not None,
+        "llm_configured": s.llm_configured(),
+        "llm_provider": s.resolved_provider(),
     }
 
 

@@ -30,6 +30,20 @@ PRICES: dict[str, ModelPrice] = {
 }
 
 
+# Provider-specific model identifiers. Canonical (Anthropic) IDs are used everywhere else.
+OPENROUTER_IDS: dict[str, str] = {
+    "claude-haiku-5-5": "anthropic/claude-haiku-5.5",
+    "claude-sonnet-5-5": "anthropic/claude-sonnet-5.5",
+    "claude-opus-5-5": "anthropic/claude-opus-5.5",
+}
+
+
+def provider_model_id(model: str, provider: str) -> str:
+    if provider == "openrouter":
+        return OPENROUTER_IDS[model]
+    return model
+
+
 @dataclass(frozen=True)
 class ModelProfile:
     name: str
