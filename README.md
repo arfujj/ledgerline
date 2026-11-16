@@ -21,7 +21,7 @@ make smoke                # one Claude Haiku 5.5 call through the audited client
 ## Measured results
 
 <!-- METRICS:START -->
-_Copied verbatim from [evals/report.md](evals/report.md) (Generated 2026-11-16 22:09 UTC from commit `2081316`)._
+_Copied verbatim from [evals/report.md](evals/report.md) (Generated 2026-11-16 22:09 UTC from commit `af3bc81`)._
 
 ## Retrieval ablation
 

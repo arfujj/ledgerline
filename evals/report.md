@@ -1,6 +1,6 @@
 # Ledgerline evaluation report
 
-Generated 2026-11-16 22:09 UTC from commit `2081316` by `evals/report.py`. Every number below is read from `evals/results/*.json`, produced by actually running the evals. Nothing is hand-entered.
+Generated 2026-11-16 22:09 UTC from commit `af3bc81` by `evals/report.py`. Every number below is read from `evals/results/*.json`, produced by actually running the evals. Nothing is hand-entered.
 
 ## Retrieval ablation
 
