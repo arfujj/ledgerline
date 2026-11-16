@@ -50,6 +50,9 @@ engagement:
 ask:
 	uv run python scripts/ask.py $(Q)
 
+deliverables:
+	uv run python scripts/export_deliverables.py
+
 ingest:
 	uv run python scripts/ingest.py
 
