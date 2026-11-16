@@ -46,7 +46,7 @@ Status: **APPROVED 2026-11-16 with the "cheapest way" directive.** See §5 for t
 | UI | Next.js (App Router), Tailwind, React Flow for process maps, Recharts | |
 | MCP | Official `mcp` Python SDK | stdio and streamable HTTP. |
 | Observability | OpenTelemetry sent to self-hosted Langfuse | **Off by default** (compose profile `observability`). Spans go to a local JSONL exporter otherwise. |
-| Export | `python-docx` and WeasyPrint (PDF), plus Markdown | |
+| Export | `python-docx`, ReportLab (PDF), Markdown | ReportLab instead of WeasyPrint: pure Python, no system libraries, reproducible output. |
 
 ---
 

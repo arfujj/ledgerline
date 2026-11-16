@@ -23,3 +23,6 @@ down:
 
 smoke:
 	uv run python scripts/smoke_llm.py
+
+dataroom:
+	uv run python scripts/generate_dataroom.py --seed 7
