@@ -1,5 +1,4 @@
-# Default stack: Qdrant, Neo4j, Postgres, API. The UI and Langfuse are added in later phases
-# behind profiles so a plain `docker compose up` stays light.
+# Default stack: Qdrant, Neo4j, Postgres, API, UI. Langfuse is opt-in: --profile observability.
 name: ledgerline
 
 services:
@@ -52,6 +51,7 @@ services:
       - ./dataroom:/app/dataroom:ro
       - ./corpus:/app/corpus:ro
       - ./data:/app/data
+      - ./evals:/app/evals:ro
     depends_on:
       qdrant: { condition: service_healthy }
       neo4j: { condition: service_healthy }
@@ -60,6 +60,15 @@ services:
       test: ["CMD-SHELL", "python -c \"import urllib.request;urllib.request.urlopen('http://localhost:8000/health')\""]
       interval: 5s
       retries: 20
+
+  ui:
+    build:
+      context: .
+      dockerfile: docker/ui.Dockerfile
+      args: { NEXT_PUBLIC_API_URL: "http://localhost:8000" }
+    ports: ["3000:3000"]
+    depends_on:
+      api: { condition: service_healthy }
 
 volumes:
   qdrant_data:

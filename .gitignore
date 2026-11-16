@@ -20,3 +20,7 @@ node_modules/
 # iCloud/Finder conflict copies (e.g. "file 2.py")
 * 2
 * 2.*
+
+ui/node_modules/
+ui/.next/
+*.tsbuildinfo
