@@ -12,9 +12,9 @@ from mcp.client.stdio import StdioServerParameters, stdio_client
 
 
 async def main() -> int:
-    params = StdioServerParameters(command=sys.executable,
-                                   args=["-m", "ledgerline.mcp_server.server"],
-                                   env={**os.environ})
+    params = StdioServerParameters(
+        command=sys.executable, args=["-m", "ledgerline.mcp_server.server"], env={**os.environ}
+    )
     async with stdio_client(params) as (read, write), ClientSession(read, write) as s:
         await s.initialize()
         tools = await s.list_tools()
