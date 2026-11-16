@@ -13,6 +13,7 @@ dependencies = [
     "httpx==0.28.1",
     "langgraph==1.2.19",
     "matplotlib==3.11.2",
+    "mcp==2.3.0",
     "neo4j==5.28.8",
     "numpy==2.5.5",
     "pandas==3.1.1",

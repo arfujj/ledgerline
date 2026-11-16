@@ -53,6 +53,12 @@ ask:
 deliverables:
 	uv run python scripts/export_deliverables.py
 
+mcp:
+	uv run python -m ledgerline.mcp_server.server
+
+mcp-smoke:
+	uv run python scripts/mcp_smoke.py
+
 ingest:
 	uv run python scripts/ingest.py
 
