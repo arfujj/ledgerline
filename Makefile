@@ -1,3 +1,6 @@
+# Robust imports even if macOS hides the editable-install .pth inside .venv.
+export PYTHONPATH := $(CURDIR)/src:$(CURDIR)
+
 .PHONY: install lint typecheck test check up down demo
 
 install:
@@ -32,6 +35,9 @@ corpus:
 
 corpus-full:
 	uv run python scripts/fetch_regulatory_corpus.py --slice full
+
+roi:
+	uv run python scripts/run_roi.py
 
 ingest:
 	uv run python scripts/ingest.py

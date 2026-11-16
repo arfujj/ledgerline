@@ -1,0 +1,54 @@
+# Opportunity catalogue: how each candidate links to mined metrics and assumptions.
+# volume_metrics are process_metrics calls whose result feeds the volume (cited as [q:...]).
+opportunities:
+  - id: OPP-RECON-MATCH
+    title: Automate reconciliation exception matching (parse RTP/Cardinal references)
+    process: recon
+    volume: {metric: activity_stats, process: recon, activities: [Exception Export to Spreadsheet, Manual Matching, Break Investigation, Journal Adjustment Prepared], field: total_elapsed_h, unit: hours, hours_factor: touch_share_recon_elapsed}
+    automation_rate: automation_rate_recon_matching
+    hourly_cost: loaded_cost_ops_hourly
+    impl_cost: impl_cost_recon_matching
+    ramp_months: ramp_months_recon
+    regulatory_sensitivity: 2
+    related_findings: [INEF-recon-manual]
+  - id: OPP-KYC-PRECHECK
+    title: Real-time document quality checks at upload to cut manual review and rework
+    process: kyc
+    volume: {metric: activity_stats, process: kyc, activities: [Manual Document Review], field: events}
+    touch_minutes: touch_min_kyc_manual_review
+    automation_rate: automation_rate_kyc_doc_precheck
+    hourly_cost: loaded_cost_ops_hourly
+    impl_cost: impl_cost_kyc_doc_precheck
+    ramp_months: ramp_months_kyc_precheck
+    regulatory_sensitivity: 2
+  - id: OPP-EDD-ASSIST
+    title: AI-assisted EDD workbench (human decision retained) to relieve the 2-person bottleneck
+    process: kyc
+    volume: {metric: activity_stats, process: kyc, activities: [Enhanced Due Diligence Review], field: events}
+    touch_minutes: touch_min_kyc_edd_review
+    automation_rate: automation_rate_edd_assist
+    hourly_cost: loaded_cost_compliance_hourly
+    impl_cost: impl_cost_edd_assist
+    ramp_months: ramp_months_edd
+    extra_value: value_edd_conversion
+    regulatory_sensitivity: 4
+  - id: OPP-DSP-INTAKE
+    title: Dispute intake automation with enforced Reg E provisional-credit timers and human review
+    process: disputes
+    volume: {metric: activity_stats, process: disputes, activities: [Intake Triage, Provisional Credit Issued, Merchant Evidence Requested, Customer Notified], field: events}
+    touch_minutes: touch_min_dispute_manual_step
+    automation_rate: automation_rate_dispute_intake
+    hourly_cost: loaded_cost_ops_hourly
+    impl_cost: impl_cost_dispute_intake
+    ramp_months: ramp_months_dispute
+    extra_value: value_reg_e_risk_reduction
+    regulatory_sensitivity: 5
+  - id: OPP-SUP-STATUS
+    title: Supervised AI agent for status inquiries with mandatory escalation and QA sampling
+    process: support
+    volume: {metric: ticket_categories, categories: [card_dispute_status, kyc_verification_status, transfer_delay], field: total_handle_hours, unit: hours}
+    automation_rate: ai_deflection_status_tickets
+    hourly_cost: loaded_cost_ops_hourly
+    impl_cost: impl_cost_status_agent
+    ramp_months: ramp_months_status_agent
+    regulatory_sensitivity: 3

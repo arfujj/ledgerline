@@ -55,3 +55,23 @@ A flagged document is quarantined. Its chunks are marked `trusted=false`, and an
 **Decision.** All metrics are whitelisted, parameterised SQL over a DuckDB file that tools only ever open read-only. The metrics cover cycle time, SLA breach, manual share, rework, variants, handoffs, resource load and bottlenecks, the directly-follows graph, late steps, and ticket categories. PM4Py is the optional `mining` extra, and it is used only for inductive-miner process trees in `process/discovery.py`. Every query gets a deterministic `query_id` and is logged together with its SQL, parameters and a result hash. A deliverable cites it as `[q:<id>]`, and the verifier re-runs it and compares the hash.
 
 **Consequences.** Process numbers are reproducible and auditable, and the tools cannot write to the database (tested). Process maps degrade gracefully to the SQL directly-follows graph when PM4Py is not installed.
+
+## ADR-007: A transparent, deterministic ROI model
+
+**Decision.** Each opportunity's ROI is computed in plain Python with no LLM arithmetic, and it has exactly two kinds of input:
+- **Volumes** come from `process_metrics` queries, cited as `[q:…]` and annualised over the measured data window (also a cited query).
+- **Assumptions** come from `config/roi_assumptions.yaml`, cited as `[a:…]`. Each has a low, base and high value, a unit and a rationale.
+
+**Volume method.** Hands-on effort is estimated in one of two ways:
+- Where steps run back to back, as in reconciliation, it is the elapsed time before manual steps × an assumed hands-on share. This calibrates against the board deck's "three analysts fully utilized".
+- Elsewhere it is manual step count × assumed touch minutes, because elapsed time there includes queueing.
+
+**Financials.** NPV is computed over the horizon at the discount rate, with benefits starting after a ramp period and an annual run cost. The analysis also includes payback, a one-at-a-time tornado sensitivity, and conservative, base and optimistic scenarios. In the conservative and optimistic scenarios, cost-like assumptions move against value.
+
+**Priority rules.** These are explicit, not learned:
+- **deprioritize:** NPV ≤ 0
+- **quick win:** time to value ≤ 3 months and implementation cost ≤ $80k
+- **strategic bet:** NPV ≥ $100k
+- **fill-in:** everything else
+
+**Consequences.** Every figure in the ROI summary is reproducible, and changing an assumption changes the deliverable in a traceable way. Property-based tests check that the model is monotone.

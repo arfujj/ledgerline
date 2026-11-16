@@ -48,7 +48,9 @@ METRICS: dict[str, tuple[str, str]] = {
                round(median(date_diff('second', prev_ts, timestamp) / 3600.0), 2)
                    AS median_wait_h,
                round(quantile_cont(date_diff('second', prev_ts, timestamp) / 3600.0, 0.9), 2)
-                   AS p90_wait_h
+                   AS p90_wait_h,
+               round(coalesce(sum(date_diff('second', prev_ts, timestamp)), 0) / 3600.0, 1)
+                   AS total_elapsed_h
         FROM ev WHERE process_key = $process GROUP BY activity ORDER BY events DESC""",
     ),
     "manual_share": (

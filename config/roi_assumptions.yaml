@@ -1,0 +1,55 @@
+# ROI model assumptions. Every value used by the model lives here and is cited as [a:<id>].
+# low/base/high drive the sensitivity analysis. These are consultant estimates, NOT client data.
+assumptions:
+  loaded_cost_ops_hourly:
+    {base: 68, low: 55, high: 85, unit: USD/hour, rationale: "Fully loaded operations analyst cost (salary + benefits + overhead), US fintech mid-market benchmark."}
+  loaded_cost_compliance_hourly:
+    {base: 92, low: 75, high: 115, unit: USD/hour, rationale: "Fully loaded compliance analyst cost."}
+  touch_share_recon_elapsed:
+    {base: 0.75, low: 0.60, high: 0.90, unit: fraction, rationale: "Share of elapsed time before manual reconciliation steps that is hands-on analyst work (steps run back-to-back the same morning; the remainder is waiting on banks/processors)."}
+  touch_min_kyc_manual_review:
+    {base: 9, low: 6, high: 14, unit: minutes, rationale: "Analyst time per manual document review."}
+  touch_min_kyc_edd_review:
+    {base: 35, low: 25, high: 50, unit: minutes, rationale: "Analyst time per enhanced due diligence review."}
+  touch_min_dispute_manual_step:
+    {base: 12, low: 8, high: 20, unit: minutes, rationale: "Specialist time per manual dispute step (triage, evidence request, notification)."}
+  automation_rate_recon_matching:
+    {base: 0.70, low: 0.50, high: 0.85, unit: fraction, rationale: "Share of manual reconciliation steps removable by rules-based + ML matching with RTP/Cardinal reference parsing."}
+  automation_rate_kyc_doc_precheck:
+    {base: 0.40, low: 0.25, high: 0.55, unit: fraction, rationale: "Share of manual reviews avoided by real-time document quality checks at upload."}
+  automation_rate_edd_assist:
+    {base: 0.30, low: 0.15, high: 0.45, unit: fraction, rationale: "Analyst time saved per EDD case by AI-assisted evidence gathering and draft memos (human decision retained)."}
+  automation_rate_dispute_intake:
+    {base: 0.35, low: 0.20, high: 0.50, unit: fraction, rationale: "Share of manual dispute intake/notification effort removed with AI-assisted intake under human oversight."}
+  ai_deflection_status_tickets:
+    {base: 0.45, low: 0.30, high: 0.60, unit: fraction, rationale: "Share of status-inquiry tickets resolvable by a supervised AI agent with mandatory escalation rules."}
+  impl_cost_recon_matching:
+    {base: 140000, low: 100000, high: 210000, unit: USD, rationale: "Matching rules, reference parsers, exception workflow; vendor config + 1 engineer for 4 months."}
+  impl_cost_kyc_doc_precheck:
+    {base: 60000, low: 40000, high: 90000, unit: USD, rationale: "Vendor feature enablement + app changes."}
+  impl_cost_edd_assist:
+    {base: 120000, low: 80000, high: 180000, unit: USD, rationale: "LLM-assisted EDD workbench with audit trail and model risk validation."}
+  impl_cost_dispute_intake:
+    {base: 150000, low: 100000, high: 220000, unit: USD, rationale: "Intake automation, Reg E timer controls, human review queue, validation."}
+  impl_cost_status_agent:
+    {base: 70000, low: 45000, high: 110000, unit: USD, rationale: "Agent scoping, escalation policy, QA sampling, vendor contract remediation."}
+  run_cost_pct_of_impl:
+    {base: 0.20, low: 0.12, high: 0.30, unit: fraction/year, rationale: "Annual run, licensing and maintenance as a share of implementation cost."}
+  value_reg_e_risk_reduction:
+    {base: 250000, low: 100000, high: 600000, unit: USD/year, rationale: "Expected annual reduction in Reg E remediation/restitution and supervisory risk from enforced provisional-credit timers (illustrative expected-loss estimate)."}
+  value_edd_conversion:
+    {base: 60000, low: 20000, high: 120000, unit: USD/year, rationale: "Revenue retained from fewer onboarding drop-offs when EDD wait falls (illustrative)."}
+  discount_rate:
+    {base: 0.10, low: 0.08, high: 0.14, unit: fraction/year, rationale: "Hurdle rate for NPV."}
+  horizon_years:
+    {base: 3, low: 3, high: 3, unit: years, rationale: "Evaluation horizon."}
+  ramp_months_recon:
+    {base: 4, low: 3, high: 6, unit: months, rationale: "Time to value."}
+  ramp_months_kyc_precheck:
+    {base: 2, low: 1, high: 3, unit: months, rationale: "Time to value."}
+  ramp_months_edd:
+    {base: 5, low: 4, high: 8, unit: months, rationale: "Time to value."}
+  ramp_months_dispute:
+    {base: 6, low: 4, high: 9, unit: months, rationale: "Time to value."}
+  ramp_months_status_agent:
+    {base: 3, low: 2, high: 5, unit: months, rationale: "Time to value."}
