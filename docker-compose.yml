@@ -1,0 +1,67 @@
+# Default stack: Qdrant, Neo4j, Postgres, API. The UI and Langfuse are added in later phases
+# behind profiles so a plain `docker compose up` stays light.
+name: ledgerline
+
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.20.2
+    ports: ["6333:6333"]
+    volumes: [qdrant_data:/qdrant/storage]
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c ':> /dev/tcp/127.0.0.1/6333' || exit 1"]
+      interval: 5s
+      retries: 20
+
+  neo4j:
+    image: neo4j:2026.10.2-community
+    ports: ["7474:7474", "7687:7687"]
+    environment:
+      NEO4J_AUTH: neo4j/${LEDGERLINE_NEO4J_PASSWORD:-ledgerline-dev}
+      NEO4J_server_memory_heap_max__size: 512m
+      NEO4J_server_memory_pagecache_size: 256m
+    volumes: [neo4j_data:/data]
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:7474 >/dev/null || exit 1"]
+      interval: 5s
+      retries: 30
+
+  postgres:
+    image: postgres:18.7-alpine
+    ports: ["${LEDGERLINE_PG_HOST_PORT:-55432}:5432"]
+    environment:
+      POSTGRES_USER: ledgerline
+      POSTGRES_PASSWORD: ledgerline
+      POSTGRES_DB: ledgerline
+    volumes: [pg_data:/var/lib/postgresql]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ledgerline"]
+      interval: 5s
+      retries: 20
+
+  api:
+    build: { context: ., dockerfile: docker/api.Dockerfile }
+    ports: ["8000:8000"]
+    env_file: [{ path: .env, required: false }]
+    environment:
+      LEDGERLINE_QDRANT_URL: http://qdrant:6333
+      LEDGERLINE_NEO4J_URI: bolt://neo4j:7687
+      LEDGERLINE_POSTGRES_DSN: postgresql+psycopg://ledgerline:ledgerline@postgres:5432/ledgerline
+    # Only the readable data room is mounted. Eval-only files (prefixed "_") are excluded
+    # by the app's path guard and are never needed in this container.
+    volumes:
+      - ./dataroom:/app/dataroom:ro
+      - ./corpus:/app/corpus:ro
+      - ./data:/app/data
+    depends_on:
+      qdrant: { condition: service_healthy }
+      neo4j: { condition: service_healthy }
+      postgres: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request;urllib.request.urlopen('http://localhost:8000/health')\""]
+      interval: 5s
+      retries: 20
+
+volumes:
+  qdrant_data:
+  neo4j_data:
+  pg_data:
