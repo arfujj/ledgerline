@@ -43,6 +43,13 @@ graph:
 	uv run python scripts/build_graph.py
 	uv run python -m evals.answer_key_eval
 
+engagement:
+	uv run python scripts/run_engagement.py
+	uv run python -m evals.answer_key_eval
+
+ask:
+	uv run python scripts/ask.py $(Q)
+
 ingest:
 	uv run python scripts/ingest.py
 

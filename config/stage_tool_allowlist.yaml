@@ -1,0 +1,8 @@
+# Per-stage tool allow-lists, enforced in code by ToolRegistry.call (not just in prompts).
+stages:
+  discovery: [hybrid_search, graph_query]
+  process_analysis: [process_metrics, hybrid_search, calculator]
+  opportunity_sizing: [roi_model, process_metrics, calculator]
+  gap_analysis: [graph_query, hybrid_search, diff_versions, version_as_of]
+  synthesis: [draft_section]
+  qa: [hybrid_search, visual_search, graph_query, diff_versions, version_as_of, process_metrics, roi_model, calculator]

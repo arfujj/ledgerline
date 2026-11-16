@@ -1,0 +1,15 @@
+# Service levels used by generic inefficiency detectors (consultant defaults, cited as [a:...]).
+slas:
+  kyc: {threshold_hours: 48, label: "decision within 2 business days"}
+  disputes: {threshold_hours: 1080, label: "resolution within 45 days"}
+  recon: {threshold_hours: 5, label: "sign-off by 11:00 (5h after 06:00 start)"}
+thresholds:
+  manual_share_high: 0.30
+  bottleneck_wait_hours: 24
+  bottleneck_max_resources: 3
+  rework_case_share: 0.15
+  sla_breach_rate: 0.05
+  late_step_rate: 0.05
+  handoffs_avg: 0.75
+  ticket_category_share: 0.20
+  single_resource_min_events: 100

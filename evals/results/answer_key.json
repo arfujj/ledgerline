@@ -65,5 +65,60 @@
    "F-GAP-23",
    "F-GAP-07"
   ]
+ },
+ "engagement_gaps": {
+  "findings": 24,
+  "key_items": 11,
+  "precision": 0.5833,
+  "recall": 0.9091,
+  "severity_exact": 0.5,
+  "severity_within_one": 0.9,
+  "matched": {
+   "GAP-01": "F-GAP-06",
+   "GAP-02": "F-GAP-02",
+   "GAP-03": "F-GAP-13",
+   "GAP-04": "F-GAP-18",
+   "GAP-05": "F-GAP-19",
+   "GAP-06": "F-GAP-15",
+   "GAP-07": "F-GAP-20",
+   "GAP-09": "F-GAP-11",
+   "GAP-10": "F-GAP-24",
+   "GAP-11": "F-GAP-01"
+  },
+  "missed": [
+   "GAP-08"
+  ],
+  "unmatched_findings": [
+   "F-GAP-10",
+   "F-GAP-16",
+   "F-GAP-04",
+   "F-GAP-05",
+   "F-GAP-08",
+   "F-GAP-09",
+   "F-GAP-12",
+   "F-GAP-14",
+   "F-GAP-23",
+   "F-GAP-07"
+  ]
+ },
+ "engagement_inefficiencies": {
+  "findings": 8,
+  "key_items": 8,
+  "precision": 1.0,
+  "recall": 1.0,
+  "severity_exact": 0.75,
+  "severity_within_one": 1.0,
+  "matched": {
+   "INEF-01": "F-INEF-05",
+   "INEF-02": "F-INEF-01",
+   "INEF-03": "F-INEF-02",
+   "INEF-04": "F-INEF-03",
+   "INEF-05": "F-INEF-06",
+   "INEF-06": "F-INEF-03",
+   "INEF-07": "F-INEF-07",
+   "INEF-08": "F-INEF-08"
+  },
+  "missed": [],
+  "unmatched_findings": []
  }
 }

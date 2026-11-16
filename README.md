@@ -21,7 +21,7 @@ make smoke                # one Claude Haiku 5.5 call through the audited client
 ## Measured results
 
 <!-- METRICS:START -->
-_Copied verbatim from [evals/report.md](evals/report.md) (Generated 2026-11-16 22:23 UTC from commit `f06e406`)._
+_Copied verbatim from [evals/report.md](evals/report.md) (Generated 2026-11-16 22:34 UTC from commit `3f1a573`)._
 
 ## Retrieval ablation
 
@@ -60,6 +60,8 @@ Findings are matched to the eval-only answer key with a deterministic rule: the 
 |---|---|---|---|---|---|---|
 | Graph gap analysis: all findings | 24 | 0.583 | 0.909 | 0.500 | 0.900 | GAP-08 |
 | Graph gap analysis: confidence >= 0.6 | 18 | 0.611 | 0.818 | 0.556 | 0.889 | GAP-05, GAP-08 |
+| Full engagement: compliance gaps | 24 | 0.583 | 0.909 | 0.500 | 0.900 | GAP-08 |
+| Full engagement: inefficiencies | 8 | 1.000 | 1.000 | 0.750 | 1.000 | - |
 ## Guardrails: prompt-injection detection at ingest
 
 | Seeded injection docs | Detected | Detection recall | False positives | Clean docs scanned |

@@ -92,3 +92,25 @@ Inside that scope, a modal-verb regex pre-filter sends only obligation-bearing c
 The gap set is a graph query: applicable requirements with no `SATISFIES {status:'satisfied'}` edge. Findings are aggregated per topic, and split by counterparty for contracts. Every node and edge carries its source document, clause or page, and the extraction model. An in-memory twin of the store runs the same gap semantics in tests.
 
 **Consequences.** A full graph build costs a few cents. Recall on the seeded gaps is measured in `evals/report.md`. Because the taxonomy is fixed, a gap outside it can be missed, which recall makes visible.
+
+## ADR-009: Router, agent loop and verifier
+
+**Router.** The router is cheap first and adaptive:
+1. Regex intent classification picks a route (temporal, visual, numeric, diff, graph or hybrid), a corpus (data room or regulatory) and an `as_of` date.
+2. A first pass runs the cheapest suitable tools. A temporal question gets `version_as_of` plus as-of-filtered search; a compliance question searches both corpora.
+3. A lexical-coverage self-check decides whether to escalate. Numeric questions always escalate, because they need exact tools.
+4. Escalation is a bounded (≤4-step) Claude tool-use loop over the stage's allow-listed tools, implemented with the Anthropic SDK directly. LangChain's chat wrappers would force `tool_choice`, which current models reject.
+5. If the model still reports insufficient evidence after the cheap path, the router escalates once and retries.
+
+**Answers.** An answer is structured output: sentences that each list evidence ids. Evidence is the only thing that can be cited. Each evidence item carries canonical citations: `[doc:…]`, `[q:…]`, `[a:…]` or `[calc]`.
+
+**Verifier.** Each sentence goes through three checks:
+1. It must cite at least one valid evidence id.
+2. Every non-trivial number must round to a value in the cited evidence, allowing ×100 for percentages and about 1% for approximate figures of 100 or more.
+3. A batched LLM entailment judge labels it supported or not.
+
+Failing sentences are dropped and logged. If nothing survives, the answer is "insufficient evidence".
+
+**Engagement.** The engagement is a LangGraph `StateGraph` of five stages. Inefficiency findings come from generic threshold detectors over mined metrics (`config/process_slas.yaml`), with no LLM involved. Memo sections are drafted by the LLM from findings and ROI evidence, then verified. The 90-day roadmap is deterministic.
+
+**Caveat.** The detector thresholds were written by the same author who seeded the synthetic data. The report flags inefficiency recall as optimistic for that reason.

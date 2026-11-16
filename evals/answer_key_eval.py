@@ -1,7 +1,7 @@
 """Score findings against the seeded answer key (eval-only; the app never reads the key).
 
 Matching rule (deterministic): a finding matches a key item when it cites at least one of the
-key item's evidence documents AND its title/rationale/recommendation mentions at least one of
+key item's evidence documents (for inefficiencies: at least one [q:...] data-query citation) AND its title/rationale/recommendation mentions at least one of
 the item's match keywords. Precision = findings matching any key item / findings considered.
 Recall = key items matched / key items. Severity agreement over matched pairs.
 """
@@ -22,10 +22,15 @@ def _docs(cites: list[str]) -> set[str]:
 
 
 def matches(finding: dict[str, Any], item: dict[str, Any]) -> bool:
-    fdocs = _docs(finding.get("evidence_citations", []) + finding.get("requirement_citations", []))
-    kdocs = {e["doc_id"] for e in item.get("evidence", [])}
-    if kdocs and not (fdocs & kdocs):
-        return False
+    cites = finding.get("evidence_citations", []) + finding.get("requirement_citations", [])
+    if item.get("category") == "inefficiency":
+        # Inefficiencies are evidenced by event-log data: require a [q:...] query citation.
+        if not any(c.startswith("[q:") for c in cites):
+            return False
+    else:
+        kdocs = {e["doc_id"] for e in item.get("evidence", [])}
+        if kdocs and not (_docs(cites) & kdocs):
+            return False
     text = " ".join(
         [finding.get("title", ""), finding.get("rationale", ""), finding.get("recommendation", "")]
     ).lower()

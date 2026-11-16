@@ -187,7 +187,9 @@ class ROIModel:
             time_to_value_months=ramp,
             regulatory_sensitivity=int(opp["regulatory_sensitivity"]),
             inputs=inputs,
-            citations=sorted({i.source for i in inputs}),
+            citations=sorted(
+                {i.source for i in inputs}, key=lambda c: (not c.startswith("[q:"), c)
+            ),
         )
 
     def evaluate_all(self, scenario: Scenario = "base") -> list[OpportunityResult]:
