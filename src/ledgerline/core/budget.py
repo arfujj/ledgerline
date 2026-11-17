@@ -20,7 +20,7 @@ class SpendTracker:
         self.max_per_day = max_per_day
         self.ledger_path = ledger_path
         self._run_spend: dict[str, float] = {}
-        self._lock = threading.Lock()
+        self._lock = threading.RLock()
 
     @staticmethod
     def _today() -> str:
@@ -29,7 +29,11 @@ class SpendTracker:
     def _load_day(self) -> dict[str, float]:
         if self.ledger_path is None or not self.ledger_path.exists():
             return {}
-        data: dict[str, float] = json.loads(self.ledger_path.read_text(encoding="utf-8"))
+        with self._lock:
+            raw = self.ledger_path.read_text(encoding="utf-8")
+        if not raw.strip():
+            return {}
+        data: dict[str, float] = json.loads(raw)
         return data
 
     def day_spend(self) -> float:
@@ -57,4 +61,7 @@ class SpendTracker:
                 today = self._today()
                 day[today] = day.get(today, 0.0) + usd
                 self.ledger_path.parent.mkdir(parents=True, exist_ok=True)
-                self.ledger_path.write_text(json.dumps(day, sort_keys=True), encoding="utf-8")
+                # Atomic replace so concurrent readers never see a partially written file.
+                tmp = self.ledger_path.with_suffix(f".{threading.get_ident()}.tmp")
+                tmp.write_text(json.dumps(day, sort_keys=True), encoding="utf-8")
+                tmp.replace(self.ledger_path)

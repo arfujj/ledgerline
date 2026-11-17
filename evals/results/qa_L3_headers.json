@@ -1,0 +1,1313 @@
+[
+ {
+  "qid": "G0092",
+  "type": "fact",
+  "answer": "Under the mutual fund AML/CFT program rule, internal policies, procedures, and controls must be commensurate with the money laundering, terrorist financing, and other illicit finance activity risks the mutual fund faces.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "Under the mutual fund AML/CFT program rule, internal policies, procedures, and controls must be commensurate with the money laundering, terrorist financing, and other illicit finance activity risks the mutual fund faces.",
+    "cites": [
+     "[doc:FR-2024-14414#s1024.210(a)(2)]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1338.3,
+  "cost": 0.0009018000000000001,
+  "correct": 1.0,
+  "false_refusal": 0.0,
+  "citation_precision": 1.0,
+  "retrieval_hit": 1.0,
+  "claims": 1.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0096",
+  "type": "fact",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 661.3,
+  "cost": 0.00017000000000000004,
+  "correct": 0.0,
+  "false_refusal": 1.0,
+  "retrieval_hit": 0.0
+ },
+ {
+  "qid": "G0080",
+  "type": "fact",
+  "answer": "A foreign payment stablecoin issuer may offer or sell payment stablecoins using a digital asset service provider if the issuer is registered with the Comptroller. Under the Act, such a registration is deemed approved 30 days after the Comptroller receives it, unless the Comptroller notifies the issuer in writing that it has been rejected.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "A foreign payment stablecoin issuer may offer or sell payment stablecoins using a digital asset service provider if the issuer is registered with the Comptroller.",
+    "cites": [
+     "[doc:GENIUS-ACT-2025#s18(c)(1)(A)]"
+    ],
+    "evidence_ids": [
+     "E2"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "Under the Act, such a registration is deemed approved 30 days after the Comptroller receives it, unless the Comptroller notifies the issuer in writing that it has been rejected.",
+    "cites": [
+     "[doc:GENIUS-ACT-2025#s18(c)(1)(A)]"
+    ],
+    "evidence_ids": [
+     "E2"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1286.7,
+  "cost": 0.0006328000000000001,
+  "correct": 1.0,
+  "false_refusal": 0.0,
+  "citation_precision": 1.0,
+  "retrieval_hit": 1.0,
+  "claims": 2.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0086",
+  "type": "fact",
+  "answer": "Under clause 1029.210(d), a loan or finance company's written AML/CFT program must be approved by its board of directors, an equivalent governing body within the company, or appropriate senior management. When requested, the company must make a copy of its AML/CFT program available to FinCEN or its designee.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "Under clause 1029.210(d), a loan or finance company's written AML/CFT program must be approved by its board of directors, an equivalent governing body within the company, or appropriate senior management.",
+    "cites": [
+     "[doc:FR-2026-07033#s1029.210(d)]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "When requested, the company must make a copy of its AML/CFT program available to FinCEN or its designee.",
+    "cites": [
+     "[doc:FR-2026-07033#s1029.210(d)]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 2946.2,
+  "cost": 0.0016501000000000003,
+  "correct": 1.0,
+  "false_refusal": 0.0,
+  "citation_precision": 1.0,
+  "retrieval_hit": 1.0,
+  "claims": 2.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0074",
+  "type": "fact",
+  "answer": "NovaPay's AI Acceptable Use Policy (version 1.1, effective 2026-05-15) allows approved AI agents to issue goodwill refunds or fee reversals without employee review up to USD 250 per customer per month.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "NovaPay's AI Acceptable Use Policy (version 1.1, effective 2026-05-15) allows approved AI agents to issue goodwill refunds or fee reversals without employee review up to USD 250 per customer per month.",
+    "cites": [
+     "[doc:POL-AI-001#s3. Autonomy of AI Agents]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1011.1,
+  "cost": 0.00034600000000000006,
+  "correct": 1.0,
+  "false_refusal": 0.0,
+  "citation_precision": 1.0,
+  "retrieval_hit": 1.0,
+  "claims": 1.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0085",
+  "type": "fact",
+  "answer": "Under proposed \u00a7 1521.4(a), assets not listed in section 4(a)(1)(A) may be allowed for a state-level regime only if the OCC has approved them as similarly liquid Federal Government-issued assets. The Treasury document containing this clause (version 2026-06489) has an effective date of 2026-04-03.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "Under proposed \u00a7 1521.4(a), assets not listed in section 4(a)(1)(A) may be allowed for a state-level regime only if the OCC has approved them as similarly liquid Federal Government-issued assets.",
+    "cites": [
+     "[doc:FR-2026-06489#p16852]",
+     "[doc:FR-2026-06489#s1521.4(a)]"
+    ],
+    "evidence_ids": [
+     "E3",
+     "E5"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "The Treasury document containing this clause (version 2026-06489) has an effective date of 2026-04-03.",
+    "cites": [
+     "[doc:FR-2026-06489#p16852]"
+    ],
+    "evidence_ids": [
+     "E3"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1571.9,
+  "cost": 0.0011937000000000002,
+  "correct": 1.0,
+  "false_refusal": 0.0,
+  "citation_precision": 1.0,
+  "retrieval_hit": 1.0,
+  "claims": 2.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0137",
+  "type": "fact",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1205.3,
+  "cost": 0.0012356000000000003,
+  "correct": 0.0,
+  "false_refusal": 1.0,
+  "retrieval_hit": 0.0
+ },
+ {
+  "qid": "G0072",
+  "type": "fact",
+  "answer": "The NovaPay Anti-Money Laundering and Bank Secrecy Act Policy is owned by Grace Lin, Chief Compliance Officer. The policy is reviewed annually.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "The NovaPay Anti-Money Laundering and Bank Secrecy Act Policy is owned by Grace Lin, Chief Compliance Officer.",
+    "cites": [
+     "[doc:POL-AML-001#sDocument Control]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "The policy is reviewed annually.",
+    "cites": [
+     "[doc:POL-AML-001#sDocument Control]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1274.6,
+  "cost": 0.00043690000000000005,
+  "correct": 1.0,
+  "false_refusal": 0.0,
+  "citation_precision": 1.0,
+  "retrieval_hit": 1.0,
+  "claims": 2.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0168",
+  "type": "multi_hop",
+  "answer": "The evidence does not show a conflict: the NovaPay policy permits approved AI agents to issue goodwill refunds up to USD 250 per customer per month without employee review, but the FDIC excerpt provided only contains questions about liquidity and repurchase agreements under proposed \u00a7 350.3 and does not address refunds, customer remediation, or AI agents. Therefore the evidence is insufficient to determine whether the refund provision affects FDIC treatment of permitted payment stablecoin issuers.",
+  "refused": true,
+  "sentences": [
+   {
+    "text": "The evidence does not show a conflict: the NovaPay policy permits approved AI agents to issue goodwill refunds up to USD 250 per customer per month without employee review, but the FDIC excerpt provided only contains questions about liquidity and repurchase agreements under proposed \u00a7 350.3 and does not address refunds, customer remediation, or AI agents.",
+    "cites": [
+     "[doc:POL-AI-001#s3. Autonomy of AI Agents]",
+     "[doc:FR-2026-06974#p18539]"
+    ],
+    "evidence_ids": [
+     "E1",
+     "E4"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "Therefore the evidence is insufficient to determine whether the refund provision affects FDIC treatment of permitted payment stablecoin issuers.",
+    "cites": [
+     "[doc:FR-2026-06974#p18539]"
+    ],
+    "evidence_ids": [
+     "E4"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1640.6,
+  "cost": 0.0005961999999999999,
+  "correct": 0.0,
+  "false_refusal": 1.0,
+  "citation_precision": 1.0,
+  "retrieval_hit": 0.0,
+  "claims": 2.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0183",
+  "type": "multi_hop",
+  "answer": "The NovaPay AML policy covers its annual ML/TF risk assessment and states it will be refreshed before launch to cover on-chain transfer and redemption risk, but it does not address capital or operational backstop calculations. The OCC final rule calculates the operational backstop requirement based on the prior 12 months of total expenses. The evidence does not show whether NovaPay's policy addresses this OCC backstop calculation requirement, since the AML policy excerpt is limited to risk assessment matters.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "The NovaPay AML policy covers its annual ML/TF risk assessment and states it will be refreshed before launch to cover on-chain transfer and redemption risk, but it does not address capital or operational backstop calculations.",
+    "cites": [
+     "[doc:POL-AML-001#s2. Risk Assessment]"
+    ],
+    "evidence_ids": [
+     "E2"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "The OCC final rule calculates the operational backstop requirement based on the prior 12 months of total expenses.",
+    "cites": [
+     "[doc:FR-2026-21706#p67130]"
+    ],
+    "evidence_ids": [
+     "E3"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "The evidence does not show whether NovaPay's policy addresses this OCC backstop calculation requirement, since the AML policy excerpt is limited to risk assessment matters.",
+    "cites": [
+     "[doc:POL-AML-001#s2. Risk Assessment]",
+     "[doc:FR-2026-21706#p67130]"
+    ],
+    "evidence_ids": [
+     "E2",
+     "E3"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1385.0,
+  "cost": 0.0003384,
+  "correct": 1.0,
+  "false_refusal": 0.0,
+  "citation_precision": 1.0,
+  "retrieval_hit": 1.0,
+  "claims": 3.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0193",
+  "type": "multi_hop",
+  "answer": "The evidence shows the testing requirement in the insurance company rule (1025.210(a)(5)) requires independent, periodic testing by qualified personnel or a qualified outside party that evaluates agents' and brokers' compliance. A possible gap to flag is whether NovaPay's policy includes periodic independent testing that expressly evaluates agent and broker compliance, which should be verified against the policy text.",
+  "refused": true,
+  "sentences": [
+   {
+    "text": "The evidence shows the testing requirement in the insurance company rule (1025.210(a)(5)) requires independent, periodic testing by qualified personnel or a qualified outside party that evaluates agents' and brokers' compliance.",
+    "cites": [
+     "[doc:FR-2024-14414#s1025.210(a)(5)]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "A possible gap to flag is whether NovaPay's policy includes periodic independent testing that expressly evaluates agent and broker compliance, which should be verified against the policy text.",
+    "cites": [
+     "[doc:FR-2024-14414#s1025.210(a)(5)]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 2031.6,
+  "cost": 0.0011524,
+  "correct": 0.0,
+  "false_refusal": 1.0,
+  "citation_precision": 1.0,
+  "retrieval_hit": 1.0,
+  "claims": 2.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0172",
+  "type": "multi_hop",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 668.7,
+  "cost": 0.0008281,
+  "correct": 0.0,
+  "false_refusal": 1.0,
+  "retrieval_hit": 1.0
+ },
+ {
+  "qid": "G0189",
+  "type": "multi_hop",
+  "answer": "The current AML risk assessment, completed in January 2026, rated residual risk as Moderate but does not yet cover on-chain transfer and redemption risk. NovaPay's AML policy states the assessment will be refreshed before the stablecoin launch to cover on-chain transfer and redemption risk. Under the GENIUS Act, a digital asset service provider includes a person that, for compensation or profit, engages in the business in the United States of transferring digital assets to a third party, and issuing payment stablecoins also counts under the definition.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "The current AML risk assessment, completed in January 2026, rated residual risk as Moderate but does not yet cover on-chain transfer and redemption risk.",
+    "cites": [
+     "[doc:POL-AML-001#s2. Risk Assessment]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "NovaPay's AML policy states the assessment will be refreshed before the stablecoin launch to cover on-chain transfer and redemption risk.",
+    "cites": [
+     "[doc:POL-AML-001#s2. Risk Assessment]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "Under the GENIUS Act, a digital asset service provider includes a person that, for compensation or profit, engages in the business in the United States of transferring digital assets to a third party, and issuing payment stablecoins also counts under the definition.",
+    "cites": [
+     "[doc:FR-2026-16796#p53368]",
+     "[doc:FR-2026-16796#s1523.1(c)]"
+    ],
+    "evidence_ids": [
+     "E2",
+     "E4"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 3741.0,
+  "cost": 0.0016218,
+  "correct": 1.0,
+  "false_refusal": 0.0,
+  "citation_precision": 0.5,
+  "retrieval_hit": 1.0,
+  "claims": 3.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0175",
+  "type": "multi_hop",
+  "answer": "NovaPay's AML policy designates Chief Compliance Officer Grace Lin as BSA/AML Officer with sufficient authority, direct access to the Board Risk Committee, and quarterly program status reporting to that committee. The FinCEN proposed rule requires an AML/CFT program to designate an individual as the BSA/AML officer. The cited OCC excerpts address supervisory reporting and enforcement policy but do not specify the access or reporting arrangements a permitted issuer's compliance officer must have, so whether NovaPay's arrangements match that framework cannot be confirmed from this evidence.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "NovaPay's AML policy designates Chief Compliance Officer Grace Lin as BSA/AML Officer with sufficient authority, direct access to the Board Risk Committee, and quarterly program status reporting to that committee.",
+    "cites": [
+     "[doc:POL-AML-001#s3. BSA Officer]"
+    ],
+    "evidence_ids": [
+     "E2"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "The FinCEN proposed rule requires an AML/CFT program to designate an individual as the BSA/AML officer.",
+    "cites": [
+     "[doc:FR-2026-07033#p18719]"
+    ],
+    "evidence_ids": [
+     "E5"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "The cited OCC excerpts address supervisory reporting and enforcement policy but do not specify the access or reporting arrangements a permitted issuer's compliance officer must have, so whether NovaPay's arrangements match that framework cannot be confirmed from this evidence.",
+    "cites": [
+     "[doc:FR-2026-21706#p67087]",
+     "[doc:FR-2026-12692#p37841]"
+    ],
+    "evidence_ids": [
+     "E1",
+     "E4"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 4816.2,
+  "cost": 0.0021770999999999995,
+  "correct": 0.5,
+  "false_refusal": 0.0,
+  "citation_precision": 0.5,
+  "retrieval_hit": 1.0,
+  "claims": 3.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0166",
+  "type": "multi_hop",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 2293.2,
+  "cost": 0.0005513000000000002,
+  "correct": 0.0,
+  "false_refusal": 1.0,
+  "retrieval_hit": 1.0
+ },
+ {
+  "qid": "G0179",
+  "type": "multi_hop",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 3401.6,
+  "cost": 0.0022903999999999993,
+  "correct": 0.0,
+  "false_refusal": 1.0,
+  "retrieval_hit": 1.0
+ },
+ {
+  "qid": "G0002",
+  "type": "numeric",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1451.3,
+  "cost": 0.0010009000000000003,
+  "correct": 0.0,
+  "false_refusal": 1.0
+ },
+ {
+  "qid": "G0000",
+  "type": "numeric",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 2558.7,
+  "cost": 0.0025604999999999994,
+  "correct": 0.0,
+  "false_refusal": 1.0
+ },
+ {
+  "qid": "G0004",
+  "type": "numeric",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 600.8,
+  "cost": 0.0003232999999999999,
+  "correct": 0.0,
+  "false_refusal": 1.0
+ },
+ {
+  "qid": "G0006",
+  "type": "numeric",
+  "answer": "The Q3 2026 operating KPI table reports 4,667 KYC applications in Q1, 4,670 in Q2, and 4,663 in Q3, covering January through September 2026. The evidence does not state a combined January-to-September total, so the total is not provided here.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "The Q3 2026 operating KPI table reports 4,667 KYC applications in Q1, 4,670 in Q2, and 4,663 in Q3, covering January through September 2026.",
+    "cites": [
+     "[doc:BRD-2026-Q3#p1]"
+    ],
+    "evidence_ids": [
+     "E4"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "The evidence does not state a combined January-to-September total, so the total is not provided here.",
+    "cites": [
+     "[doc:BRD-2026-Q3#p1]"
+    ],
+    "evidence_ids": [
+     "E4"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 2919.0,
+  "cost": 0.0027748999999999994,
+  "correct": 0.0,
+  "false_refusal": 0.0,
+  "claims": 2.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0001",
+  "type": "numeric",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 823.4,
+  "cost": 0.0013439999999999997,
+  "correct": 0.0,
+  "false_refusal": 1.0
+ },
+ {
+  "qid": "G0008",
+  "type": "numeric",
+  "answer": "According to NovaPay's KYC SOP, potential sanctions or PEP matches are reviewed only by EDD-certified analysts, and currently two people hold that certification: Priya Raman and Marcus Ode.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "According to NovaPay's KYC SOP, potential sanctions or PEP matches are reviewed only by EDD-certified analysts, and currently two people hold that certification: Priya Raman and Marcus Ode.",
+    "cites": [
+     "[doc:SOP-KYC-001#s3. Enhanced Due Diligence]"
+    ],
+    "evidence_ids": [
+     "E3"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1145.5,
+  "cost": 0.0010678000000000007,
+  "correct": 0.0,
+  "false_refusal": 0.0,
+  "claims": 1.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0009",
+  "type": "numeric",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 621.4,
+  "cost": 0.0004733000000000003,
+  "correct": 0.0,
+  "false_refusal": 1.0
+ },
+ {
+  "qid": "G0005",
+  "type": "numeric",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 644.9,
+  "cost": 0.00032379999999999996,
+  "correct": 0.0,
+  "false_refusal": 1.0
+ },
+ {
+  "qid": "G0163",
+  "type": "table",
+  "answer": "Point (b) of the AI Act excerpt states that the AI system is intended to improve the result of a previously completed human activity.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "Point (b) of the AI Act excerpt states that the AI system is intended to improve the result of a previously completed human activity.",
+    "cites": [
+     "[doc:EU-AI-ACT-2024#s]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1092.0,
+  "cost": 0.0008951999999999996,
+  "correct": 1.0,
+  "false_refusal": 0.0,
+  "citation_precision": 1.0,
+  "retrieval_hit": 1.0,
+  "claims": 1.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0153",
+  "type": "table",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 2313.9,
+  "cost": 0.0013585999999999997,
+  "correct": 0.0,
+  "false_refusal": 1.0,
+  "retrieval_hit": 1.0
+ },
+ {
+  "qid": "G0144",
+  "type": "table",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 922.1,
+  "cost": 0.0005952999999999991,
+  "correct": 0.0,
+  "false_refusal": 1.0,
+  "retrieval_hit": 0.0
+ },
+ {
+  "qid": "G0148",
+  "type": "table",
+  "answer": "The 2026 AML training completion table shows 38 Support staff required, with 33 completed, so 5 were still outstanding. That population shows an 86.8% completion rate.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "The 2026 AML training completion table shows 38 Support staff required, with 33 completed, so 5 were still outstanding.",
+    "cites": [
+     "[doc:REG-TRN-2026#sCompletion]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "That population shows an 86.8% completion rate.",
+    "cites": [
+     "[doc:REG-TRN-2026#sCompletion]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 937.5,
+  "cost": 0.0008264999999999991,
+  "correct": 1.0,
+  "false_refusal": 0.0,
+  "citation_precision": 1.0,
+  "retrieval_hit": 1.0,
+  "claims": 2.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0151",
+  "type": "table",
+  "answer": "The Q3 2026 Customer Complaints Summary logged 412 complaints under the 'Dispute taking too long' theme for NovaPay, with a trend of Up.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "The Q3 2026 Customer Complaints Summary logged 412 complaints under the 'Dispute taking too long' theme for NovaPay, with a trend of Up.",
+    "cites": [
+     "[doc:REG-CPL-2026#sThemes]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1225.6,
+  "cost": 0.0006839000000000003,
+  "correct": 1.0,
+  "false_refusal": 0.0,
+  "citation_precision": 1.0,
+  "retrieval_hit": 1.0,
+  "claims": 1.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0147",
+  "type": "table",
+  "answer": "The Liquidity forecast model is owned by Treasury and is Tier 2. It was last validated on 2025-12-05.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "The Liquidity forecast model is owned by Treasury and is Tier 2.",
+    "cites": [
+     "[doc:POL-MRM-001#s3. Model Inventory]"
+    ],
+    "evidence_ids": [
+     "E2"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "It was last validated on 2025-12-05.",
+    "cites": [
+     "[doc:POL-MRM-001#s3. Model Inventory]"
+    ],
+    "evidence_ids": [
+     "E2"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1024.9,
+  "cost": 0.0003690999999999998,
+  "correct": 1.0,
+  "false_refusal": 0.0,
+  "citation_precision": 1.0,
+  "retrieval_hit": 1.0,
+  "claims": 2.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0155",
+  "type": "table",
+  "answer": "Vaultline Custody Trust had the most recent last risk assessment, dated 2026-07-15, in the vendor inventory's reassessment table.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "Vaultline Custody Trust had the most recent last risk assessment, dated 2026-07-15, in the vendor inventory's reassessment table.",
+    "cites": [
+     "[doc:REG-VND-2026#sLast reassessment]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 3004.3,
+  "cost": 0.0012994999999999977,
+  "correct": 0.0,
+  "false_refusal": 0.0,
+  "citation_precision": 1.0,
+  "retrieval_hit": 1.0,
+  "claims": 1.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0157",
+  "type": "table",
+  "answer": "Under the EU AI Act, access to AI regulatory sandboxes is free of charge for SMEs, including start-ups. The exception is that national competent authorities may recover exceptional costs in a fair and proportionate manner.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "Under the EU AI Act, access to AI regulatory sandboxes is free of charge for SMEs, including start-ups.",
+    "cites": [
+     "[doc:EU-AI-ACT-2024#s]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "The exception is that national competent authorities may recover exceptional costs in a fair and proportionate manner.",
+    "cites": [
+     "[doc:EU-AI-ACT-2024#s]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1038.5,
+  "cost": 0.00047059999999999897,
+  "correct": 1.0,
+  "false_refusal": 0.0,
+  "citation_precision": 1.0,
+  "retrieval_hit": 1.0,
+  "claims": 2.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0054",
+  "type": "temporal",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1422.7,
+  "cost": 0.0005610999999999984,
+  "correct": 0.0,
+  "false_refusal": 1.0
+ },
+ {
+  "qid": "G0045",
+  "type": "temporal",
+  "answer": "The most recent evidence is version 2026-07033, effective 2026-04-10, which still describes FinCEN's AML/CFT program rule as a proposed rule (the 2024 NPRM published July 3, 2024).",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "The most recent evidence is version 2026-07033, effective 2026-04-10, which still describes FinCEN's AML/CFT program rule as a proposed rule (the 2024 NPRM published July 3, 2024).",
+    "cites": [
+     "[doc:FR-2026-07033#p18706]",
+     "[doc:FR-2026-07033#p18723]"
+    ],
+    "evidence_ids": [
+     "E3",
+     "E5"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 4422.4,
+  "cost": 0.0021523999999999988,
+  "correct": 1.0,
+  "false_refusal": 0.0,
+  "citation_precision": 1.0,
+  "claims": 1.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0200",
+  "type": "temporal",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1124.3,
+  "cost": 0.0002582999999999995,
+  "correct": 0.0,
+  "false_refusal": 1.0,
+  "retrieval_hit": 0.0
+ },
+ {
+  "qid": "G0041",
+  "type": "temporal",
+  "answer": "The earlier version 2024-14414, effective 2024-07-03, is also in the evidence, but nothing provided states that it has been superseded.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "The earlier version 2024-14414, effective 2024-07-03, is also in the evidence, but nothing provided states that it has been superseded.",
+    "cites": [
+     "[doc:FR-2024-14414#p55432]",
+     "[doc:FR-2024-14414#p55428]"
+    ],
+    "evidence_ids": [
+     "E1",
+     "E2"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 4312.8,
+  "cost": 0.0026648999999999996,
+  "correct": 0.0,
+  "false_refusal": 0.0,
+  "citation_precision": 0.0,
+  "claims": 1.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0214",
+  "type": "temporal",
+  "answer": "Under the OCC rule effective March 2, 2026, if a significant change in circumstances materially affects a permitted payment stablecoin issuer's capital adequacy or its ability to meet the additional capital or backstop requirement by the specified date, the issuer may request, or the OCC may propose, a change in the additional capital or backstop requirement. The change may also concern the date by which the requirement must be met, as stated in the same clause for the version effective March 2, 2026.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "Under the OCC rule effective March 2, 2026, if a significant change in circumstances materially affects a permitted payment stablecoin issuer's capital adequacy or its ability to meet the additional capital or backstop requirement by the specified date, the issuer may request, or the OCC may propose, a change in the additional capital or backstop requirement.",
+    "cites": [
+     "[doc:FR-2026-04089#s15.42(c)(5)]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "The change may also concern the date by which the requirement must be met, as stated in the same clause for the version effective March 2, 2026.",
+    "cites": [
+     "[doc:FR-2026-04089#s15.42(c)(5)]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1708.5,
+  "cost": 0.0006475999999999999,
+  "correct": 0.5,
+  "false_refusal": 0.0,
+  "citation_precision": 1.0,
+  "retrieval_hit": 1.0,
+  "claims": 2.0,
+  "unsupported_claims": 1.0
+ },
+ {
+  "qid": "G0218",
+  "type": "temporal",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1945.4,
+  "cost": 0.0007355,
+  "correct": 0.0,
+  "false_refusal": 1.0,
+  "retrieval_hit": 0.0
+ },
+ {
+  "qid": "G0198",
+  "type": "temporal",
+  "answer": "As of March 2, 2026, the OCC's stablecoin issuer approval rule was still a proposal, under which an applicant could request a hearing to appeal a denial of a substantially complete application within 30 days of receiving the denial notice. The proposed appeals process would have been a de novo review of the original application, the material before the OCC official who made the initial denial, and any information the applicant submitted at appeal, with the Comptroller able to uphold or reverse the denial.",
+  "refused": false,
+  "sentences": [
+   {
+    "text": "As of March 2, 2026, the OCC's stablecoin issuer approval rule was still a proposal, under which an applicant could request a hearing to appeal a denial of a substantially complete application within 30 days of receiving the denial notice.",
+    "cites": [
+     "[doc:FR-2026-04089#p10232]"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "status": "supported",
+    "note": ""
+   },
+   {
+    "text": "The proposed appeals process would have been a de novo review of the original application, the material before the OCC official who made the initial denial, and any information the applicant submitted at appeal, with the Comptroller able to uphold or reverse the denial.",
+    "cites": [
+     "[doc:FR-2026-21706#p67108]"
+    ],
+    "evidence_ids": [
+     "E2"
+    ],
+    "status": "supported",
+    "note": ""
+   }
+  ],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 4117.8,
+  "cost": 0.003783199999999997,
+  "correct": 0.5,
+  "false_refusal": 0.0,
+  "citation_precision": 0.5,
+  "retrieval_hit": 0.0,
+  "claims": 2.0,
+  "unsupported_claims": 0.0
+ },
+ {
+  "qid": "G0038",
+  "type": "temporal",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 3803.5,
+  "cost": 0.002484799999999997,
+  "correct": 0.0,
+  "false_refusal": 1.0
+ },
+ {
+  "qid": "G0240",
+  "type": "unanswerable",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 922.8,
+  "cost": 0.0007524000000000003,
+  "correct": 1.0,
+  "false_refusal": 0.0
+ },
+ {
+  "qid": "G0223",
+  "type": "unanswerable",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 717.1,
+  "cost": 0.0007180999999999993,
+  "correct": 1.0,
+  "false_refusal": 0.0
+ },
+ {
+  "qid": "G0231",
+  "type": "unanswerable",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1469.6,
+  "cost": 0.0002934999999999986,
+  "correct": 1.0,
+  "false_refusal": 0.0
+ },
+ {
+  "qid": "G0246",
+  "type": "unanswerable",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 875.2,
+  "cost": 0.0001516999999999994,
+  "correct": 1.0,
+  "false_refusal": 0.0
+ },
+ {
+  "qid": "G0239",
+  "type": "unanswerable",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1018.6,
+  "cost": 0.00045309999999999795,
+  "correct": 1.0,
+  "false_refusal": 0.0
+ },
+ {
+  "qid": "G0249",
+  "type": "unanswerable",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 997.8,
+  "cost": 0.0011507999999999987,
+  "correct": 1.0,
+  "false_refusal": 0.0
+ },
+ {
+  "qid": "G0228",
+  "type": "unanswerable",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 640.0,
+  "cost": 0.0008177999999999987,
+  "correct": 1.0,
+  "false_refusal": 0.0
+ },
+ {
+  "qid": "G0242",
+  "type": "unanswerable",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1123.5,
+  "cost": 0.0017493000000000005,
+  "correct": 1.0,
+  "false_refusal": 0.0
+ },
+ {
+  "qid": "G0017",
+  "type": "visual",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 918.4,
+  "cost": 0.0010494000000000007,
+  "correct": 0.0,
+  "false_refusal": 1.0
+ },
+ {
+  "qid": "G0014",
+  "type": "visual",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1300.7,
+  "cost": 0.0014408000000000008,
+  "correct": 0.0,
+  "false_refusal": 1.0
+ },
+ {
+  "qid": "G0016",
+  "type": "visual",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 1725.5,
+  "cost": 0.0015483000000000007,
+  "correct": 0.0,
+  "false_refusal": 1.0
+ },
+ {
+  "qid": "G0011",
+  "type": "visual",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 945.0,
+  "cost": 0.0004319000000000007,
+  "correct": 0.0,
+  "false_refusal": 1.0
+ },
+ {
+  "qid": "G0013",
+  "type": "visual",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 674.0,
+  "cost": 0.0006291000000000005,
+  "correct": 0.0,
+  "false_refusal": 1.0
+ },
+ {
+  "qid": "G0012",
+  "type": "visual",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 880.0,
+  "cost": 0.0008035999999999998,
+  "correct": 0.0,
+  "false_refusal": 1.0
+ },
+ {
+  "qid": "G0015",
+  "type": "visual",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 911.1,
+  "cost": 0.0009449999999999997,
+  "correct": 0.0,
+  "false_refusal": 1.0
+ },
+ {
+  "qid": "G0010",
+  "type": "visual",
+  "answer": "Insufficient evidence in the data room and corpus to answer this reliably.",
+  "refused": true,
+  "sentences": [],
+  "route": "plain",
+  "escalated": false,
+  "latency_ms": 601.4,
+  "cost": 0.0006090999999999996,
+  "correct": 0.0,
+  "false_refusal": 1.0
+ }
+]

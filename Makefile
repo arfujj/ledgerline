@@ -85,3 +85,23 @@ fix-venv:
 
 process-db:
 	uv run python scripts/build_process_db.py
+
+visual:
+	uv run python scripts/build_visual_index.py
+
+observability:
+	docker compose -f docker/langfuse/docker-compose.yml -p ledgerline-langfuse up -d
+
+# Everything a reviewer needs, end to end (~10 min first time; ~$0.01 of Claude Haiku 5.5).
+demo: up dataroom corpus ingest process-db visual graph engagement deliverables
+	@echo "Open http://localhost:3000 (UI) and http://localhost:8000/docs (API)."
+
+# Full evaluation suite -> evals/report.md -> README metrics (~$0.5 on Claude Haiku 5.5).
+eval:
+	uv run python -m evals.run_retrieval
+	uv run python -m evals.temporal_eval
+	uv run python evals/guardrail_eval.py
+	uv run python -m evals.answer_key_eval
+	uv run python -m evals.qa_eval
+	uv run python -m evals.report
+	uv run python scripts/build_readme_metrics.py

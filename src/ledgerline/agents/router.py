@@ -175,7 +175,12 @@ def sufficient(question: str, evidence: list[Evidence]) -> tuple[bool, float]:
     return cov >= 0.6, round(cov, 3)
 
 
+FULL_FEATURES = frozenset({"router", "visual", "graph", "temporal", "escalate", "verify"})
+
+
 class QAAgent:
+    """`features` lets the eval harness switch capabilities off for the ablation ladder."""
+
     def __init__(
         self,
         ctx: AppContext,
@@ -183,25 +188,102 @@ class QAAgent:
         max_agent_steps: int = 4,
         verify_with_llm: bool = True,
         allow_escalation: bool = True,
+        features: frozenset[str] = FULL_FEATURES,
+        store: Any | None = None,
+        k: int = 6,
     ) -> None:
         self.ctx = ctx
         self.run_id = run_id
         self.tools = ToolRegistry(ctx, run_id)
         self.max_steps = max_agent_steps
-        self.verify_with_llm = verify_with_llm
-        self.allow_escalation = allow_escalation
+        self.features = features
+        self.verify_with_llm = verify_with_llm and "verify" in features
+        self.allow_escalation = allow_escalation and "escalate" in features
+        self.store = store
+        self.k = k
 
     def _log(self, name: str, **payload: Any) -> None:
         self.ctx.audit.write(
             AuditEvent(run_id=self.run_id, kind="route", stage="qa", name=name, payload=payload)
         )
 
+    def detect_lineage(self, question: str) -> str | None:
+        """Pick the versioned rulemaking whose title/issuer best overlaps the question."""
+        q = set(re.findall(r"[a-z]{3,}", question.lower())) - _STOP
+        aliases = {"occ": "comptroller", "genius": "stablecoins", "fincen": "financial"}
+        q |= {aliases[w] for w in q if w in aliases}
+        words: dict[str, set[str]] = {}
+        counts: dict[str, int] = {}
+        for d in self.ctx.manifest.docs:
+            text = f"{d.title} {d.issuer} {d.lineage_id.replace('-', ' ')}".lower()
+            words.setdefault(d.lineage_id, set()).update(re.findall(r"[a-z]{3,}", text))
+            counts[d.lineage_id] = counts.get(d.lineage_id, 0) + 1
+        best = max(
+            ((len(q & w), lin) for lin, w in words.items() if counts[lin] > 1), default=(0, None)
+        )
+        return best[1] if best[0] >= 2 else None
+
+    def plain_search(self, question: str, pool: EvidencePool, corpus: str = "any") -> None:
+        """Baseline retrieval (optionally against an ablation collection)."""
+        if self.store is None:
+            for e in self.tools.call(
+                "qa", "hybrid_search", {"query": question, "corpus": corpus, "k": self.k}
+            ):
+                pool.add(e)
+            return
+        for h in self.store.search(question, k=self.k, mode=getattr(self.store, "mode", "hybrid")):
+            c = h.chunk
+            pool.add(
+                Evidence(
+                    kind="doc",
+                    text=f"{c.header}\n{c.text}",
+                    cites=[f"[doc:{c.doc_id}#{c.locator()}]"],
+                    trusted=c.trusted,
+                )
+            )
+
     def first_pass(self, question: str, r: Route, pool: EvidencePool) -> None:
+        f = self.features
+        if "router" not in f:
+            self.plain_search(question, pool)
+            return
+        if r.name == "temporal" and "temporal" not in f:
+            r = Route("hybrid", reasons=["temporal disabled"])
+        if r.name == "graph" and "graph" not in f:
+            r = Route("hybrid", reasons=["graph disabled"])
+        if r.name == "visual" and "visual" not in f:
+            r = Route("hybrid", corpus="dataroom", reasons=["visual disabled"])
+        if r.name == "hybrid" and self.store is not None:
+            self.plain_search(question, pool)
+            return
         if r.name == "temporal":
+            lin = self.detect_lineage(question)
+            if lin and r.as_of:
+                for e in self.tools.call(
+                    "qa", "version_as_of", {"lineage_id": lin, "as_of": r.as_of}
+                ):
+                    pool.add(e)
             for e in self.tools.call(
                 "qa",
                 "hybrid_search",
                 {"query": question, "corpus": "regulatory", "as_of": r.as_of, "k": 6},
+            ):
+                pool.add(e)
+        elif r.name == "graph":
+            for e in self.tools.call("qa", "graph_query", {"kind": "gaps"})[:4]:
+                pool.add(e)
+            for corpus in ("dataroom", "regulatory"):
+                for e in self.tools.call(
+                    "qa", "hybrid_search", {"query": question, "corpus": corpus, "k": 4}
+                ):
+                    pool.add(e)
+        elif r.name == "diff":
+            lin = self.detect_lineage(question)
+            if lin:
+                for e in self.tools.call("qa", "diff_versions", {"lineage_id": lin}):
+                    pool.add(e)
+            for e in self.tools.call(
+                "qa", "hybrid_search", {"query": question, "corpus": "regulatory", "k": 4}
             ):
                 pool.add(e)
         elif r.name == "visual":
@@ -268,12 +350,12 @@ class QAAgent:
     def answer(self, question: str) -> dict[str, Any]:
         t0 = time.perf_counter()
         spend0 = self.ctx.llm.spend.run_spend(self.run_id)
-        r = route(question)
+        r = route(question) if "router" in self.features else Route("plain")
         pool = EvidencePool()
         self.first_pass(question, r, pool)
         ok, cov = sufficient(question, pool.items)
         # Numeric questions need precise tools (process_metrics / roi_model): always escalate.
-        need = (not ok) or r.name == "numeric"
+        need = (not ok) or (r.name == "numeric" and "router" in self.features)
         escalated, steps = False, 0
         if need and self.allow_escalation:
             escalated = True

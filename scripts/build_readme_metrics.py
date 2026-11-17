@@ -17,7 +17,8 @@ START, END = "<!-- METRICS:START -->", "<!-- METRICS:END -->"
 def block() -> str:
     report = (ROOT / "evals" / "report.md").read_text()
     sections = re.findall(
-        r"(## (?:Retrieval ablation|Temporal|Answer-key|Guardrails)[^\n]*\n.*?)(?=\n## |\Z)",
+        r"(## (?:Answer-level ablation|Retrieval ablation|Temporal|Answer-key|Cost and latency|"
+        r"Guardrails)[^\n]*\n.*?)(?=\n## |\Z)",
         report,
         re.S,
     )

@@ -133,6 +133,95 @@ def main() -> None:
                 f"{m['ndcg@10']:.3f} |"
             )
         lines.append("")
+    qa = RES / "qa_ablation.json"
+    if qa.exists():
+        a = json.loads(qa.read_text())
+        labels = {
+            "L1_naive_rag": "L1 Naive RAG (fixed chunks, dense)",
+            "L2_hybrid": "L2 Hybrid (structure chunks, dense+BM25)",
+            "L3_headers": "L3 + contextual headers",
+            "L4_visual": "L4 + visual (ColPali + page reading)",
+            "L5_graph": "L5 + knowledge graph",
+            "L6_temporal": "L6 + temporal (as-of)",
+            "L7_full": "L7 Full: agentic escalation + verifier",
+        }
+        cols = [
+            ("answer_correctness", "Correct"),
+            ("numeric_accuracy", "Numeric"),
+            ("temporal_correctness", "Temporal"),
+            ("refusal_accuracy", "Refusal"),
+            ("false_refusal_rate", "False refusal"),
+            ("citation_precision", "Cite prec."),
+            ("hallucinated_claim_rate", "Halluc. claims"),
+            ("latency_p50_ms", "p50 ms"),
+            ("latency_p95_ms", "p95 ms"),
+            ("cost_per_question_usd", "$/question"),
+        ]
+        lines += [
+            "## Answer-level ablation",
+            "",
+            f"Dataset: **{a['dataset']}**. Stratified sample of {a['sample_per_type']} "
+            f"items per question type (n={a['sample_n']}), identical across configs. "
+            "Model: Claude Haiku 5.5 for every role. Answer correctness is deterministic "
+            "for numeric, visual, template-temporal and unanswerable items, and graded by "
+            "a Claude Haiku judge against the reference answer for the rest. The "
+            "hallucinated-claim rate comes from the same independent post-hoc entailment "
+            "check for every config.",
+            "",
+            "| Config | " + " | ".join(c[1] for c in cols) + " |",
+            "|---|" + "---|" * len(cols),
+        ]
+
+        def fmt(k: str, v: float) -> str:
+            if v != v:  # NaN
+                return "-"
+            if k.startswith("latency"):
+                return f"{v:,.0f}"
+            if k.startswith("cost"):
+                return f"{v:.5f}"
+            return f"{v:.3f}"
+
+        for k, label in labels.items():
+            if k in a["configs"]:
+                m = a["configs"][k]
+                lines.append(f"| {label} | " + " | ".join(fmt(c, m[c]) for c, _ in cols) + " |")
+        lines.append("")
+        qs = RES / "qa_summary.json"
+        if qs.exists():
+            t = json.loads(qs.read_text())
+            lines += [
+                f"Full system (L7) on **all {a['full_n']} items**, by question type:",
+                "",
+                "| Type | n | Correct | Cite prec. | Retrieval hit | Halluc. claims | "
+                "p50 ms | $/question |",
+                "|---|---|---|---|---|---|---|---|",
+            ]
+            for typ, m in t.items():
+                lines.append(
+                    f"| {typ} | {int(m['n'])} | {fmt('a', m['answer_correctness'])} | "
+                    f"{fmt('a', m['citation_precision'])} | "
+                    f"{fmt('a', m['retrieval_hit_rate'])} | "
+                    f"{fmt('a', m['hallucinated_claim_rate'])} | "
+                    f"{fmt('latency', m['latency_p50_ms'])} | "
+                    f"{fmt('cost', m['cost_per_question_usd'])} |"
+                )
+            lines.append("")
+    eng_root = HERE.parent / "data" / "engagement"
+    latest = eng_root / "LATEST"
+    if latest.exists():
+        e = json.loads((eng_root / latest.read_text().strip() / "engagement.json").read_text())
+        memo_claims = sum(sec["verifier"]["claims"] for sec in e.get("memo", []))
+        memo_ok = sum(sec["verifier"]["supported"] for sec in e.get("memo", []))
+        lines += [
+            "## Cost and latency per engagement",
+            "",
+            "| Run | Model | Cost (USD) | Wall time (s) | Memo claims verified | Findings |",
+            "|---|---|---|---|---|---|",
+            f"| {e['run_id']} | {e.get('model')} via {e.get('provider')} | "
+            f"{e['cost_usd']:.4f} | {e['latency_s']} | {memo_ok:.0f}/{memo_claims:.0f} | "
+            f"{len(e['gaps']) + len(e['inefficiencies']) + len(e['security'])} |",
+            "",
+        ]
     tp = RES / "temporal.json"
     if tp.exists():
         t = json.loads(tp.read_text())["summary"]

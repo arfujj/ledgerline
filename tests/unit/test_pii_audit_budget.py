@@ -82,3 +82,19 @@ def test_response_cache(tmp_path: Path) -> None:
     c.put(k, {"x": 1})
     assert c.get(k) == {"x": 1}
     c.close()
+
+
+def test_spend_tracker_concurrent(tmp_path: Path) -> None:
+    from concurrent.futures import ThreadPoolExecutor
+
+    t = SpendTracker(100.0, 100.0, tmp_path / "s.json")
+
+    def work(i: int) -> None:
+        t.check(f"r{i % 3}", 0.0)
+        t.record(f"r{i % 3}", 0.01)
+
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        list(pool.map(work, range(200)))
+    assert t.day_spend() == pytest.approx(2.0)
+    (tmp_path / "e.json").write_text("")
+    assert SpendTracker(1, 1, tmp_path / "e.json").day_spend() == 0.0

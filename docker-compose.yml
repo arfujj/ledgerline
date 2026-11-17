@@ -31,7 +31,9 @@ services:
       POSTGRES_USER: ledgerline
       POSTGRES_PASSWORD: ledgerline
       POSTGRES_DB: ledgerline
-    volumes: [pg_data:/var/lib/postgresql]
+    volumes:
+      - pg_data:/var/lib/postgresql
+      - ./docker/postgres/init-readonly.sql:/docker-entrypoint-initdb.d/10-readonly.sql:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ledgerline"]
       interval: 5s

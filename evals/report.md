@@ -1,6 +1,6 @@
 # Ledgerline evaluation report
 
-Generated 2026-11-16 22:34 UTC from commit `3f1a573` by `evals/report.py`. Every number below is read from `evals/results/*.json`, produced by actually running the evals. Nothing is hand-entered.
+Generated 2026-11-17 02:27 UTC from commit `9dde552` by `evals/report.py`. Every number below is read from `evals/results/*.json`, produced by actually running the evals. Nothing is hand-entered.
 
 ## Retrieval ablation
 
@@ -23,6 +23,39 @@ Per-type results for the best configuration (**Hybrid + rerank + contextual head
 | fact | 0.870 | 0.870 | 0.819 | 0.832 |
 | regulatory | 0.583 | 0.583 | 0.542 | 0.553 |
 | table | 1.000 | 1.000 | 0.900 | 0.926 |
+
+## Answer-level ablation
+
+Dataset: **LLM-generated candidates (pending human review)**. Stratified sample of 8 items per question type (n=56), identical across configs. Model: Claude Haiku 5.5 for every role. Answer correctness is deterministic for numeric, visual, template-temporal and unanswerable items, and graded by a Claude Haiku judge against the reference answer for the rest. The hallucinated-claim rate comes from the same independent post-hoc entailment check for every config.
+
+| Config | Correct | Numeric | Temporal | Refusal | False refusal | Cite prec. | Halluc. claims | p50 ms | p95 ms | $/question |
+|---|---|---|---|---|---|---|---|---|---|---|
+| L1 Naive RAG (fixed chunks, dense) | 0.321 | 0.000 | 0.250 | 1.000 | 0.708 | 0.846 | 0.346 | 1,186 | 4,009 | 0.00116 |
+| L2 Hybrid (structure chunks, dense+BM25) | 0.446 | 0.000 | 0.312 | 1.000 | 0.583 | 0.910 | 0.057 | 1,001 | 3,851 | 0.00095 |
+| L3 + contextual headers | 0.420 | 0.000 | 0.250 | 1.000 | 0.562 | 0.881 | 0.024 | 1,226 | 4,313 | 0.00106 |
+| L4 + visual (ColPali + page reading) | 0.554 | 0.438 | 0.438 | 1.000 | 0.396 | 0.899 | 0.061 | 1,359 | 14,457 | 0.00154 |
+| L5 + knowledge graph | 0.562 | 0.375 | 0.312 | 1.000 | 0.375 | 0.907 | 0.035 | 1,309 | 7,343 | 0.00161 |
+| L6 + temporal (as-of) | 0.545 | 0.375 | 0.688 | 1.000 | 0.375 | 0.924 | 0.036 | 1,162 | 7,772 | 0.00139 |
+| L7 Full: agentic escalation + verifier | 0.688 | 0.625 | 0.750 | 1.000 | 0.146 | 0.893 | 0.057 | 5,848 | 13,519 | 0.00690 |
+
+Full system (L7) on **all 244 items**, by question type:
+
+| Type | n | Correct | Cite prec. | Retrieval hit | Halluc. claims | p50 ms | $/question |
+|---|---|---|---|---|---|---|---|
+| fact | 79 | 0.804 | 0.750 | 0.962 | 0.016 | 3,393 | 0.00434 |
+| multi_hop | 30 | 0.450 | 0.689 | 0.667 | 0.038 | 9,684 | 0.01141 |
+| numeric | 10 | 0.400 | - | - | 0.167 | 7,842 | 0.00758 |
+| table | 26 | 0.712 | 0.970 | 0.846 | 0.114 | 4,523 | 0.00489 |
+| temporal | 61 | 0.787 | 0.962 | 0.826 | 0.009 | 2,895 | 0.00400 |
+| unanswerable | 30 | 0.967 | - | - | 0.000 | 5,634 | 0.01106 |
+| visual | 8 | 1.000 | 1.000 | - | 0.083 | 10,459 | 0.00768 |
+| overall | 244 | 0.756 | 0.846 | 0.867 | 0.034 | 4,598 | 0.00625 |
+
+## Cost and latency per engagement
+
+| Run | Model | Cost (USD) | Wall time (s) | Memo claims verified | Findings |
+|---|---|---|---|---|---|
+| eng-demo-001 | claude-haiku-5-5 via openrouter | 0.0067 | 34.8 | 20/20 | 33 |
 
 ## Temporal (as-of) correctness
 

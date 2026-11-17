@@ -25,7 +25,16 @@ class AppContext:
         config_dir: Path = Path("config"),
     ) -> None:
         self.settings = settings or get_settings()
-        self.audit: AuditSink = audit or JsonlAuditSink(self.settings.audit_log_path)
+        if audit is None:
+            from ledgerline.core.telemetry import wrap
+
+            audit = wrap(
+                JsonlAuditSink(self.settings.audit_log_path),
+                self.settings.otel_exporter,
+                self.settings.otel_endpoint,
+                self.settings.audit_log_path.parent / "spans.jsonl",
+            )
+        self.audit: AuditSink = audit
         self.config_dir = config_dir
 
     @cached_property

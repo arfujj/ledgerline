@@ -181,3 +181,52 @@ def test_roadmap() -> None:
     assert [i["ref"] for i in rm] == ["O1", "G1", "O2"]
     assert rm[1]["citations"] == ["[doc:C#p1]", "[doc:L#s4(a)(2)]"]
     assert all(i["citations"] for i in rm)
+
+
+def test_detect_lineage() -> None:
+    from datetime import date
+
+    from ledgerline.agents.router import QAAgent
+    from ledgerline.corpus.manifest import CorpusDoc, Manifest
+
+    def d(i: str, lin: str, title: str, issuer: str) -> CorpusDoc:
+        return CorpusDoc(
+            doc_id=i,
+            lineage_id=lin,
+            issuer=issuer,
+            doc_type="proposed_rule",
+            title=title,
+            source_url="u",
+            local_path="p",
+            sha256="s",
+            retrieved_at="t",
+            publication_date=date(2026, 1, 1),
+        )
+
+    m = Manifest(
+        generated_at="t",
+        docs=[
+            d("A1", "occ-genius-issuer-rule", "Implementing the GENIUS Act for Stablecoins", "OCC"),
+            d("A2", "occ-genius-issuer-rule", "Implementing the GENIUS Act for Stablecoins", "OCC"),
+            d(
+                "B1",
+                "fincen-aml-program-rule",
+                "AML/CFT Programs",
+                "Financial Crimes Enforcement Network",
+            ),
+            d(
+                "B2",
+                "fincen-aml-program-rule",
+                "AML/CFT Programs",
+                "Financial Crimes Enforcement Network",
+            ),
+            d("C1", "cfr-x", "Single version rule", "CFPB"),
+        ],
+    )
+    agent: Any = QAAgent.__new__(QAAgent)
+    agent.ctx = SimpleNamespace(manifest=m)
+    assert (
+        agent.detect_lineage("Which FinCEN AML program rule governs?") == "fincen-aml-program-rule"
+    )
+    assert agent.detect_lineage("OCC rule implementing the GENIUS Act") == "occ-genius-issuer-rule"
+    assert agent.detect_lineage("unrelated question about lunch") is None

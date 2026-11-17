@@ -114,3 +114,41 @@ Failing sentences are dropped and logged. If nothing survives, the answer is "in
 **Engagement.** The engagement is a LangGraph `StateGraph` of five stages. Inefficiency findings come from generic threshold detectors over mined metrics (`config/process_slas.yaml`), with no LLM involved. Memo sections are drafted by the LLM from findings and ROI evidence, then verified. The 90-day roadmap is deterministic.
 
 **Caveat.** The detector thresholds were written by the same author who seeded the synthetic data. The report flags inefficiency recall as optimistic for that reason.
+
+## ADR-010: Temporal (version-aware) retrieval
+
+**Context.** Regulations change through proposed rules, final rules and effective dates. Answering from the wrong version is a material error.
+
+**Decision.** Every regulatory document carries `lineage_id`, `publication_date`, `effective_date`, `valid_from` and `valid_to`. `valid_to` is set automatically to the publication date of the document that supersedes it, from the manifest's `supersedes` edges. These fields are copied onto every chunk and indexed as Qdrant payload, so an `as_of` query filters to `valid_from ≤ as_of < valid_to` with no look-ahead.
+
+Legal status is computed separately (`version_as_of`):
+- proposed (not binding)
+- adopted but not yet effective
+- effective
+
+As a result, on 2026-11-16 the OCC GENIUS Act rule is correctly reported as *final but not effective until 2027-01-18*. `diff_versions` aligns regulatory text by CFR section and reports added, removed and modified sections with word-level changes, citing both versions. Lineage is data (`manifest.json`), not code, so re-running the fetcher picks up new final rules.
+
+**Measured.** See *Temporal (as-of) correctness* in `evals/report.md`.
+
+## ADR-011: ColPali-family visual retrieval, with VLM page reading
+
+**Context.** Board-deck values such as monthly dispute breach rates and monthly KYC volumes exist only inside chart images. Text retrieval cannot answer those questions.
+
+**Decision.** Data-room PDF pages are rendered and embedded with `vidore/colSmol-256M`, a ColPali-family late-interaction model. Each page becomes about 1,100 × 128 multi-vectors, stored in Qdrant with the MaxSim comparator. Indexing 13 pages takes about 30 s on an M2 GPU via MPS, with no CUDA required.
+
+At query time the visual route retrieves the top pages. Claude then *reads* the page images to extract only the question-relevant values, which become evidence citing `[doc:ID#pN]`. Visual retrieval is an optional extra (`uv sync --extra visual`). Without it, a documented fallback does lexical search over page text, and that fallback **cannot** recover chart-only numbers.
+
+**Why ColPali rather than OCR and captioning.** Late interaction over image patches keeps layout and chart semantics without a lossy captioning step at index time. The VLM only runs at query time, on one or two pages, which keeps cost proportional to visual questions.
+
+## ADR-012: Guardrails and least privilege
+
+- **Prompt injection.** Covered in ADR-004. Evidence marked `untrusted` is fenced as data in every prompt, and all system prompts say that evidence text is never an instruction.
+- **Per-stage tool allow-lists.** These are enforced in `ToolRegistry.call`. A denied call raises an error and is audited.
+- **Read-only data access:**
+  - DuckDB is opened `read_only=True` for every tool query (tested).
+  - The `process_metrics` tool runs only whitelisted, parameterised SQL.
+  - The Postgres role `ledgerline_reader` (SELECT only) is provisioned for reporting.
+  - Neo4j Community has no role-based access control. Graph tools therefore read only through fixed read queries or the exported JSON, and graph *writes* happen only in the offline `build_graph` job.
+- **PII scrubbing.** Applied to audit records and OpenTelemetry spans before they are written or exported.
+- **Spend caps.** Hard per-run and per-day caps, with thread-safe atomic updates to the ledger.
+- **Secrets.** These live only in `.env`, which is gitignored. A CI check fails if README metrics drift from the eval report.

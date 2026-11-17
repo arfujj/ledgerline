@@ -40,6 +40,10 @@ class Settings(BaseSettings):
     llm_cache_path: Path = Path("data/cache/llm_cache.sqlite")
     llm_cache_enabled: bool = True
 
+    # Observability: none | file | otlp (e.g. self-hosted Langfuse)
+    otel_exporter: Literal["none", "file", "otlp"] = "none"
+    otel_endpoint: str | None = None
+
     # Services
     qdrant_url: str = "http://localhost:6333"
     neo4j_uri: str = "bolt://localhost:7687"

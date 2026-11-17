@@ -249,7 +249,7 @@ class ToolRegistry:
     def visual_search(self, query: str, k: int = 3) -> list[Evidence]:
         from ledgerline.retrieval.visual import visual_search
 
-        return visual_search(self.ctx, query, k)
+        return visual_search(self.ctx, query, k, self.run_id)
 
     def process_metrics(
         self, metric: str, process: str | None = None, **params: Any
